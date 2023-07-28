@@ -3,7 +3,8 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /*
- * This file is only loaded when the singular 
+ * This file is only loaded when the singular
+ * Version  1.2.1
  * if ( is_singular( array('leuchttuerme') )  {}
  * 
  * */
