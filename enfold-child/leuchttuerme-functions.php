@@ -8,6 +8,11 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * 
  * */
 
+
+
+
+
+
 // https://kriesi.at/documentation/enfold/hooks-and-filters/
 /*	ava_main_header
 	ava_main_header_sidebar
