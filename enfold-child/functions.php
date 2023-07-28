@@ -1,7 +1,6 @@
 <?php
 
 // https://kriesi.at/documentation/enfold/hooks-and-filters/
-
 /*	ava_main_header
 	ava_main_header_sidebar
 	ava_after_main_title
@@ -16,7 +15,6 @@
 	ava_before_footer
 	ava_mailchimp_contact_form_elements
 */
-
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  
@@ -464,8 +462,8 @@ function post_meta_shortcode(){
 	$markup = avia_markup_helper(array('context' => 'entry_time','echo'=>false));
 	echo "<time class='date-container minor-meta updated' $markup>".get_the_time(get_option('date_format'))."</time>";
 	echo "<span class='text-sep text-sep-date'>/</span>";
- 
-	    $taxonomies  = get_object_taxonomies(get_post_type($the_id));
+
+    $taxonomies  = get_object_taxonomies(get_post_type($the_id));
 	    $cats = '';
 	    $excluded_taxonomies =  apply_filters('avf_exclude_taxonomies', array('post_tag','post_format'), get_post_type($the_id), $the_id);
 
