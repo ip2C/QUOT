@@ -6,8 +6,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *  Relationships (Weit. Materialien) über 
  *  WP-All-import hochgeladenen Datenbank die in verschiedenen 
  *  Post-Typen ausgegeben wird.
- * 
- * 	Version: 5.1  Achtung mit Updates   
  *  
  */
 // 
