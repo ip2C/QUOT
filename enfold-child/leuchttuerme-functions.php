@@ -46,10 +46,10 @@ function  leuchttuerme_vk_navi( )  {
 	// 
 		echo" 
 		<div class='container av-section-cont-open  leuchttuerme_headernav'>
-			<div class='flex_column av_one_third  avia-builder-el-0  el_before_av_two_third  avia-builder-el-first  first flex_column_div '>
+			<div class='flex_column av_one_half avia-builder-el-0  avia-builder-el-first  first flex_column_div '>
 			<section class='av_textblock_section' itemscope='itemscope' itemtype='https://schema.org/CreativeWork'><div class='avia_textblock megrim' itemprop='text'>
 			<a class=' ' href='/vertiefungen/virtuelles-kulturhaus/' style='text-decoration:none'><h2>Virtuelles Kulturhaus</h2>
-			</div></section></div><div class='flex_column av_two_third  avia-builder-el-2  el_after_av_one_third  el_before_av_one_half  flex_column_div '>
+			</div></section></div><div class='flex_column av_one_half  avia-builder-el-2  el_after_av_one_third  el_before_av_one_half  flex_column_div '>
 			<div class='avia-buttonrow-wrap avia-buttonrow-right  avia-builder-el-3  avia-builder-el-no-sibling  megrim'> 
 		";
 		//					

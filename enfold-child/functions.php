@@ -40,6 +40,20 @@ add_action('template_redirect', 'load_leuchttuerme_functions');
 
 
 
+/* RE  Remove Blockstyles (Gutenberg) and SVG in Wordpress header  */
+remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );
+remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
+function remove_block_css() {
+    wp_dequeue_style( 'wp-block-library' ); // Wordpress core
+    wp_dequeue_style( 'wp-block-library-theme' ); // Wordpress core
+    wp_dequeue_style( 'wc-block-style' ); // WooCommerce
+}
+add_action( 'wp_enqueue_scripts', 'remove_block_css', 100 );
+
+
+
+
+
 
 /* 
 RE  				Remove Enfold CSS aus Plugins (Theme)
@@ -48,8 +62,7 @@ function remove_plugin_css(){
     // wp_dequeue_style('avia-custom');    
        wp_dequeue_style('open-sans');     
 	   wp_dequeue_style('avia-woocommerce-css'); 
-	   wp_dequeue_style('sdm-styles'); 
-       wp_dequeue_style('wp-block-library'); 
+	   wp_dequeue_style('sdm-styles');
 	//
 	  wp_dequeue_style('avia-style');  
 }
@@ -63,7 +76,7 @@ function wpdocs_theme_name_scripts() {
   // wp_enqueue_style( 'style',  'https://dl.dropboxusercontent.com/s/glx6yt42a78yiff/style.css', array(), '1.3.0' );
      wp_enqueue_style( 'style',  get_stylesheet_uri()  , array(), time() );
 }
-add_action( 'wp_print_styles', 'wpdocs_theme_name_scripts', 10, 1000 );
+add_action( 'wp_print_styles', 'wpdocs_theme_name_scripts', 10, 999 );
 
 
 
