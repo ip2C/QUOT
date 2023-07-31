@@ -33,8 +33,8 @@ Fontblue:  rgba(44, 53, 61);
     grid-template-columns: 2fr auto 101px 24px 26px;
 }
 #cmplz-manage-consent .cmplz-manage-consent {
-    height: 30px !important;
-    padding-top: 10px !important;
+    height: 38px !important;
+    padding-top: 7px !important;
 }
 
 
@@ -535,6 +535,16 @@ ts-nav__thumbnail img {
 
     }
 }/**/
+.lt_popup{
+    font-family: 'Open Sans Condensed';
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em;
+    /*! font-size: 20px !important; */
+}
+.lt_popup .avia_button_icon{
+    font-size: 130%; 
+    margin-bottom:-30px !important; 
+}
 /* __________  Popup der Gallerie  _____  */
 #lt_masonry_gallerie{
     display: none;
@@ -552,11 +562,19 @@ ts-nav__thumbnail img {
 #top #lt_masonry_gallerie.main_color, #top #lt_masonry_gallerie.main_color div {
     background-color: transparent !important;
 }
-
-#top #lt_masonry_gallerie figure figcaption, .leuchttuerme-template-default figure figcaption{
+#top #lt_masonry_gallerie figure figcaption, #top.leuchttuerme-template-default .av-caption-style-overlay  figure figcaption{
     background: rgba(20,30,40,0.3) !important;
 }
 /* END Leuchtturme */
+
+
+
+
+
+
+
+
+
 
 
 

@@ -149,14 +149,13 @@ function  leuchttuerme_masonry( )  {
 
     // Return the active term ID
     // echo $active_term_id;
-	
-	
+
 echo 
 	do_shortcode( "
 		[av_section min_height='' min_height_pc='25' min_height_px='500px' shadow='no-border-styling' bottom_border='no-border-styling' padding='' margin='' color='footer_color' background='bg_color' custom_bg=''  position='top left' repeat='no-repeat'overlay_opacity='0.5' overlay_color='' overlay_pattern='' overlay_custom_pattern='' custom_arrow_bg='' size-btn-text='' av-desktop-font-size-btn-text='' av-medium-font-size-btn-text='' av-small-font-size-btn-text='' av-mini-font-size-btn-text='' fold_timer='' z_index_fold='' css_position_z_index='' av-desktop-css_position_z_index='' av-medium-css_position_z_index='' av-small-css_position_z_index='' av-mini-css_position_z_index='' id='' custom_class='' template_class='' aria_label='' element_template='' one_element_template='' av_element_hidden_in_editor='1' sc_version='1.0'] 
 		
 		 <span class='floatleft' style='margin-bottom:18px'>
-			<h5 style='margin-top:0px'><em>WEITERE ANGEBOTE AUS DEM THEMENBEREICH</em></h5>
+			<h5 style='margin-top:0px'><em>". __('Alle Angebote zu', 'a_translate') ."</em></h5>
 			<h2><span style='color:#fff; margin-bottom:30px'> " . $active_term_name ."</span></h2>
 			
 		</span> 
@@ -165,11 +164,11 @@ echo
 					<span class='avia_iconbox_title'></span>
 				</a> 
 
-		[av_masonry_entries link='lt_virtuelles_kulturhaus,".$active_term_id."' wc_prod_visible='' wc_prod_hidden='hide' wc_prod_featured='' prod_order_by='' prod_order='' date_filter='' date_filter_start='' date_filter_end='' date_filter_format='yy/mm/dd' period_filter_unit_1='1' period_filter_unit_2='year' sort='no' query_orderby='menu_order' query_order='ASC' caption_elements='title' caption_styling='overlay' caption_display='always' size='fixed' orientation='av-orientation-square' image_size='masonry' gap='no' columns='6' av-desktop-columns='' av-medium-columns='3' av-small-columns='2' av-mini-columns='2' items='-1' paginate='load_more' color='custom' custom_bg='' animation='active' animation_duration='' animation_custom_bg_color='' animation_custom_bg_color_multi_list='' animation_z_index_curtain='100' overlay_fx='grayscale' img_scrset='' lazy_loading='enabled' id='' custom_class='' template_class='' av_uid='av-lg9t7w89' sc_version='1.0']		
+		[av_masonry_entries link='lt_virtuelles_kulturhaus,".$active_term_id."' wc_prod_visible='' wc_prod_hidden='hide' page_element_filter='skip_current'  wc_prod_featured='' prod_order_by='' prod_order='' date_filter='' date_filter_start='' date_filter_end='' date_filter_format='yy/mm/dd' period_filter_unit_1='1' period_filter_unit_2='year' sort='no' query_orderby='menu_order' query_order='ASC' caption_elements='title' caption_styling='overlay' caption_display='always' size='fixed' orientation='av-orientation-square' image_size='masonry' gap='no' columns='6' av-desktop-columns='' av-medium-columns='3' av-small-columns='2' av-mini-columns='2' items='-1' paginate='load_more' color='custom' custom_bg='' animation='active' animation_duration='' animation_custom_bg_color='' animation_custom_bg_color_multi_list='' animation_z_index_curtain='100' overlay_fx='grayscale' img_scrset='' lazy_loading='enabled' id='' custom_class='' template_class='' av_uid='av-lg9t7w89' sc_version='1.0']		
 
 		[/av_section]
 
-")// END do_shortcode
+    ")// END do_shortcode
 ; // END echo
    				
 		
@@ -181,10 +180,9 @@ echo  "
 //
 //  
 add_action( 'ava_before_footer', 'leuchttuerme_masonry' );
-/* _______________________________________________________________________  
- 
+/* _______________________________________________________________________
  			leuchttuerme custom popup in the footer
-   _______________________________________________________________________  
+   _______________________________________________________________________
 */
 
  function do_shortcode_masonry() {
