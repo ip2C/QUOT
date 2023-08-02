@@ -128,7 +128,7 @@ add_action( 'ava_before_footer', 'leuchttuerme_postnav' );
    _______________________________________________________________________  
 */
 
-function  leuchttuerme_masonry( )  {  
+function  leuchttuerme_masonry( )  {
 	
 	 // Initialize the active term ID as null
     $active_term_id = null;
@@ -152,10 +152,9 @@ function  leuchttuerme_masonry( )  {
 
 echo 
 	do_shortcode( "
-		[av_section min_height='' min_height_pc='25' min_height_px='500px' shadow='no-border-styling' bottom_border='no-border-styling' padding='' margin='' color='footer_color' background='bg_color' custom_bg=''  position='top left' repeat='no-repeat'overlay_opacity='0.5' overlay_color='' overlay_pattern='' overlay_custom_pattern='' custom_arrow_bg='' size-btn-text='' av-desktop-font-size-btn-text='' av-medium-font-size-btn-text='' av-small-font-size-btn-text='' av-mini-font-size-btn-text='' fold_timer='' z_index_fold='' css_position_z_index='' av-desktop-css_position_z_index='' av-medium-css_position_z_index='' av-small-css_position_z_index='' av-mini-css_position_z_index='' id='' custom_class='' template_class='' aria_label='' element_template='' one_element_template='' av_element_hidden_in_editor='1' sc_version='1.0'] 
+		[av_section min_height='' min_height_pc='25' min_height_px='500px' shadow='no-border-styling' bottom_border='no-border-styling' padding='' margin='' color='footer_color' background='bg_color' custom_bg=''  position='top left' repeat='no-repeat'overlay_opacity='0.5' overlay_color='' overlay_pattern='' av-small-css_position_z_index='' av-mini-css_position_z_index='' id='lt_footer_masonry' custom_class='' template_class='' aria_label='' element_template='' one_element_template='' av_element_hidden_in_editor='1' sc_version='1.0'] 
 		
-		 <span class='floatleft' style='margin-bottom:18px'>
-			<h5 style='margin-top:0px'><em>". __('Alle Angebote zu', 'a_translate') ."</em></h5>
+		 <span class='floatleft' style='margin-bottom:18px'> 
 			<h2><span style='color:#fff; margin-bottom:30px'> " . $active_term_name ."</span></h2>
 			
 		</span> 
