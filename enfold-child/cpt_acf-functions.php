@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  */
 // 
 function  related_relationship_literatur( $outputHTML  )  {  
-	 
+	//
 	// check the arguments of the post_type, orderby
 				$args1 =array( 
 							'post_type' => 'materialien',			// the CPT 

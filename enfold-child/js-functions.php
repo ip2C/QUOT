@@ -101,7 +101,7 @@ if( is_singular( array('orientierungsplan','theor_grundlagen','vertiefungen' ) )
  
     jQuery( document ).ready( function ($) {
  
-                 var Scroll = false; 
+                var Scroll = false;
                 if(jQuery('.av-submenu-container')  ){
                     var pos_y = jQuery('.av-submenu-container').position();
                     // console.log("pos_y "  +  pos_y);

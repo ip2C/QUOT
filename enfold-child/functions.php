@@ -22,11 +22,23 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  require_once "masonry-functions.php";
 //
 function load_leuchttuerme_functions() {
-    if (is_singular('leuchttuerme')) {
+    if ( is_singular(array('leuchttuerme') ) ) {
         require_once "leuchttuerme-functions.php";
     }
 }
 add_action('template_redirect', 'load_leuchttuerme_functions');
+function custom_archive_logic() {
+    $idpost = get_the_ID();
+    if (is_archive() && get_post_type() == "leuchttuerme"  ) {
+        get_template_part('archive', 'leuchttuerme');
+    }
+}
+add_action('template_redirect', 'custom_archive_logic');
+
+
+
+
+
 /* END include */
 
 

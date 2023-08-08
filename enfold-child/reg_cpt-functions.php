@@ -19,9 +19,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 *************************************************************************************************************** */
  function cptui_register_my_cpts_materialien() {
 
-	/**
+	/*
 	 * Post Type: Weit. Materialien.
-	 */
+	*/
 
 	$labels = [
 		"name" => esc_html__( "Weit. Materialien", "custom-post-type-ui" ),
@@ -467,8 +467,8 @@ function cptui_register_my_cpts_leuchttuerme() {
 	 * Post Type: Leuchttürme.
 	 */
 	$labels = [
-		"name" => esc_html__( "Leuchttürme Seiten", "custom-post-type-ui" ),
-		"singular_name" => esc_html__( "Leuchtturm Seiten", "custom-post-type-ui" ),
+		"name" => esc_html__( "Leuchttuerme", "custom-post-type-ui" ),
+		"singular_name" => esc_html__( "Leuchtturm", "custom-post-type-ui" ),
 		"menu_name" => esc_html__( "Leuchttürme", "custom-post-type-ui" ),
 	];
 	$args = [
@@ -476,13 +476,13 @@ function cptui_register_my_cpts_leuchttuerme() {
 		"labels" => $labels,
 		"description" => "",
 		"public" => true,
+        "has_archive" => true,
 		"publicly_queryable" => true,
 		"show_ui" => true,
 		"show_in_rest" => true,
 		"rest_base" => "",
 		"rest_controller_class" => "WP_REST_Posts_Controller",
 		"rest_namespace" => "wp/v2",
-		"has_archive" => true,
 		"show_in_menu" => true,
 		"show_in_nav_menus" => true,
 		"delete_with_user" => false,
@@ -502,7 +502,20 @@ function cptui_register_my_cpts_leuchttuerme() {
 }
 
 add_action( 'init', 'cptui_register_my_cpts_leuchttuerme' );
+// address and target the archive page
+function custom_leuchttuerme_category_template($template) {
+    if (is_tax('lt_virtuelles_kulturhaus', 'leuchttuerme-virtuelles_kulturhaus')) {
+        // Get the path to your custom template file
+        $custom_template = locate_template('archive-leuchttuerme.php');
 
+        // Use the custom template if it exists, otherwise, use the default category template
+        if ($custom_template) {
+            return $custom_template;
+        }
+    }
+    return $template;
+}
+add_filter('template_include', 'custom_leuchttuerme_category_template');
 // LT VK Kategorie
 function cptui_register_my_taxes_leuchtturm_kategorien() {
 	/**

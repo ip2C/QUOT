@@ -200,13 +200,14 @@ function footer_jquery() {
 //    
 // on resize and scroll
      var lastScrollTop = 0, delta = 5;
-      
+
+
         $(window).on('resize scroll', function() { 
            
 		    var currentpos1 = 0; 
             var currentpos2 = 0; 
             //
-            if ( $('#tg_masonry').hasClass('masonrynav')  ) { 
+            if ( $('#tg_masonry').hasClass('masonrynav')  ) {
                  var currentpos1 = $('#tg_masonry .av-masonry ').position().top;
             }; 
             // END if
@@ -240,7 +241,9 @@ function footer_jquery() {
                   
             } // end else 
           
-        }); 
+        });
+
+        */
         // scroll / resize the masonry 
       //
        
