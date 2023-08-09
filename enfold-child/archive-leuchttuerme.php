@@ -10,7 +10,6 @@ require_once "leuchttuerme-functions.php";
 
 
 
-
 //  We add the same body class to the header
 function custom_bodyclass($classes) {
     $classes[] = 'leuchttuerme-template-default';
@@ -20,15 +19,19 @@ add_filter('body_class', 'custom_bodyclass');
 
 
 
+
 /*
  * get_header is a basic wordpress function, used to retrieve the header.php file in your theme directory.
  */
 get_header();
 
 
-
-
 ?>
+
+
+
+
+
 
  <div class='leuchttuerme-template-default container_wrap container_wrap_first main_color <?php avia_layout_class( 'main' ); ?>'>
 
@@ -96,10 +99,31 @@ get_header();
                                     </p>
                                 </div></section>
                             <div class='avia-button-wrap avia-button-right  avia-builder-el-9  el_after_av_textblock  avia-builder-el-last '>
-                                <a href='' class='avia-button avia-icon_select-yes-right-icon avia-size-medium avia-position-right avia-color-theme-color' target='_blank' rel='noopener noreferrer'>
-                                    <span class='avia_iconbox_title'>
+                                <?php
+                                    $term = get_queried_object(); // Get the current taxonomy term
+                                    $args = array(
+                                        'post_type' => 'leuchttuerme', // Your custom post type
+                                        'posts_per_page' => 1,
+                                        'tax_query' => array(
+                                            array(
+                                                'taxonomy' => $term->taxonomy,
+                                                'field' => 'id',
+                                                'terms' => $term->term_id,
+                                                'include_children' => false,
+                                            ),
+                                        ),
+                                    );
+
+                                    $query = new WP_Query($args);
+
+                                    if ($query->have_posts()) {
+                                        $query->the_post();
+                                        $first_post_link = get_permalink();
+                                        wp_reset_postdata(); // Reset the post data to the main query
+                                    }
+                                ?>
+                                <a href='<?php echo esc_url($first_post_link); ?>' class='avia-button avia-icon_select-yes-right-icon avia-size-medium avia-position-right avia-color-theme-color' target='_blank' rel='noopener noreferrer'>
                                         Mehr
-                                    </span>
                                     <span class='avia_button_icon avia_button_icon_right' aria-hidden='true' data-av_icon='' data-av_iconfont='entypo-fontello'> </span>
                                 </a>
                             </div>
