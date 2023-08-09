@@ -467,6 +467,9 @@ h4 em, h5 em{
 .leuchttuerme-template-default .avia-color-theme-color:hover, .leuchttuerme-template-default .avia-color-theme-color.active {
     color: #a1382f !important;
 }
+.leuchttuerme-template-default .accordion-slider iframe{
+    background-color: #000;
+}
 .wpb-posts-nav {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -492,10 +495,11 @@ h4 em, h5 em{
 .wpb-posts-nav > div:nth-child(1) a {
     grid-template-columns: 100px 1fr;
     text-align: left;
-}  .wpb-posts-nav > div:nth-child(2) a {
-       grid-template-columns: 1fr 100px;
-       text-align: right;
-   }
+}
+.wpb-posts-nav > div:nth-child(2) a {
+    grid-template-columns: 1fr 100px;
+    text-align: right;
+}
 .wpb-posts-nav__thumbnail {
     display: block;
     margin: 0;
@@ -529,7 +533,7 @@ ts-nav__thumbnail img {
 @media (min-width: 1320px) {
     .post-links .pref{
         position: absolute;
-        /*left: calc(((100vw - 1340px) / 2 ) ); */  /* exact position left on the innerwidth*/
+        /* left: calc(((100vw - 1340px) / 2 ) ); */  /* exact position left on the innerwidth */
         left: calc((100vw - 1320px)  * 0.25);   /* exact position in thwe innerwidth when the size is bigger then 1340px*/
     }
     .post-links .next{
@@ -551,7 +555,19 @@ ts-nav__thumbnail img {
 .lt_popup .avia_button_icon{
     font-size: 130%; 
     margin-bottom:-30px !important; 
+}.avia-slideshow::after{
+     position: absolute;
+     width: 100% !important;
+     height: 100% !important;
+     z-index: 100 !important;
+     top: 0px !important;
+     background-color: rgba(0,0,0,0.3);
+ }
+#extra_text .av_textblock_section .avia_textblock p:first-child{
+    padding-top: 30px;
 }
+/* END Leuchtturme */
+
 /* __________  Popup der Gallerie  _____  */
 #lt_masonry_gallerie{
     display: none;
@@ -559,7 +575,7 @@ ts-nav__thumbnail img {
 #popmake-64561{
     background-color: rgba(255, 255, 255, 1) !important;
 }
-.lt_shortcode_output *{ 
+.lt_shortcode_output *{
     opacity: 1;
     visibility: visible;
 }
@@ -576,20 +592,8 @@ ts-nav__thumbnail img {
     margin-right: 5%;
 }
 #social.toggle_wrap br{
-     display: none;
- }
-.avia-slideshow::after{
-    position: absolute;
-    width: 100% !important;
-    height: 100% !important;
-    z-index: 100 !important;
-    top: 0px !important;
-    background-color: rgba(0,0,0,0.3);
+    display: none;
 }
-/* END Leuchtturme */
-
-
-
 
 
 
