@@ -1,11 +1,11 @@
 /*
 Theme Name: Enfold Child
-Version: 6.0
+Version: 6.1.0
 Author: RE / GS
 Author URI: http://www.ip2c.de
 Template: enfold
 */
-/**/
+/**/ 
 
 /*
 red =: rgba(161 56 47, 1);
@@ -1245,7 +1245,7 @@ top #header .avia_mega_div .sub-menu .avia_mega_text_block a {
     padding: 8% 1% 8% 6%;
 }
 .op_explanungen .av-elegant-toggle .toggle_content a {
-    *background: transparent !important;
+    background: transparent !important;
     font-size:calc(8px + .4vmin) !important;
 }
 

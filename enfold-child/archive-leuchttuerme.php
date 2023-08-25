@@ -2,10 +2,8 @@
 if( ! defined( 'ABSPATH' ) ) { die(); }
 
 
-
 //  we need some functions of the single page functions as well
 require_once "leuchttuerme-functions.php";
-
 
 
 //  We add the same body class to the header
@@ -16,18 +14,28 @@ function custom_bodyclass($classes) {
 add_filter('body_class', 'custom_bodyclass');
 
 
-
 /*
  * get_header is a basic wordpress function, used to retrieve the header.php file in your theme directory.
  */
 get_header();
 
 
+// In Ihrer Archivseite (z.B., archive.php oder category.php)
+$category_term = get_queried_object(); // Den aktuellen Kategoriebegriff abrufen
+if (!empty($category_term->slug)) {
+    // Starten Sie die PHP-Session, wenn noch nicht gestartet
+    if (!session_id()) {   session_start();   }
+    
+    // Kategoriebegriff in einer Session-Variablen speichern
+    $_SESSION['archive_category_term'] = $category_term->slug;
+    
+    // Das Session-Cookie setzen (gültig für die aktuelle Browsersitzung)
+    setcookie('archive_category_term', $category_term->slug, 0, '/');
+}
+
+
+
 ?>
-
-
-
-
 
 
  <div class='leuchttuerme-template-default container_wrap container_wrap_first main_color <?php avia_layout_class( 'main' ); ?>'>
@@ -52,7 +60,7 @@ get_header();
                     $text_right = get_field('text_rechts', $term);
                 }
                 ?>
-                
+
 
                 <div class='post-entry post-entry-type-page'><div class='entry-content-wrapper clearfix'><div class='flex_column_table sc-av_one_half av-equal-height-column-flextable'>
                             <div class='flex_column av_one_half  avia-builder-el-0  el_before_av_one_half  avia-builder-el-first  first flex_column_table_cell av-equal-height-column av-align-bottom  '>

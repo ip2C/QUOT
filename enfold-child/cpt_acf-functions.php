@@ -17,16 +17,11 @@ function  related_relationship_literatur( $outputHTML  )  {
 								'meta_query' => array(  			// the meta_query is important to list only the related posts of the key
 									  'relation' => 'OR',  
 										array(	
-											'key' => 'post-relationship-tg', 
+											'key' => 'post-relationship-tg_2023', 
 											// name of custom field Relationship in: https://qualitaetsoffensive-teilhabe.de/wp-admin/post.php?post=12067&action=edit&classic-editor=1
 											'value' => '"' . get_the_ID() . '"',  
 											'compare' => 'LIKE'
-										),
-										array(							
-											'key' => 'post-relationship-gp', 			// name of custom field 2
-											'value' => '"' . get_the_ID() . '"',     
-											'compare' => 'LIKE'
-										),
+										), 
 										array(							
 											'key' => 'post-relationship-vertiefungen', 	// name of custom field 2
 											'value' => '"' . get_the_ID() . '"',     
@@ -76,13 +71,8 @@ function  related_relationship_literatur( $outputHTML  )  {
 										'meta_query' => array(  // the meta_query is important to list only the related posts of the key
 											 'relation' => 'OR',  
 												array(							
-														'key' => 'post-relationship-tg', 		// name of custom field Relationship 
+														'key' => 'post-relationship-tg_2023', 		// name of custom field Relationship 
 														'value' => '"' . get_the_ID() . '"',   // matches exactly "123", not just 123. This prevents a match for "1234"
-														'compare' => 'LIKE'
-													),
-													array(							
-														'key' => 'post-relationship-gp', 		// name of custom field 1
-														'value' => '"' . get_the_ID() . '"', 
 														'compare' => 'LIKE'
 													),
 													array(							
@@ -155,8 +145,7 @@ function  related_relationship_literatur( $outputHTML  )  {
 						
 						endforeach;
 			// hier wird der toggle geschlossen 
-			$outputHTML .= "</div><!-- close the toggle container --></div> <!-- close av_four_fifth --></div>  <!-- close container --></div>  <!-- close materialien_wrapper -->
-			<p></p>
+			$outputHTML .= "<p><br></p><p>&nbsp;</p></div><!-- close the toggle container --></div> <!-- close av_four_fifth --></div>  <!-- close container --></div>  <!-- close materialien_wrapper -->
 			";
 			//
 			// close all	

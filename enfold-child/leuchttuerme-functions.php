@@ -28,6 +28,71 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 */
 
 
+
+
+
+
+
+
+
+/* _______________________________________________________________________
+
+ 		  Test of the Dropdown Chat GPT
+   _______________________________________________________________________  
+*/
+
+if ( !is_archive() ):
+    
+function  leuchttuerme_cat_dropdown( )  {
+
+    // 
+    echo" 
+    <div class='container av-section-cont-open '>
+    <div class='flex_column av_one_half avia-builder-el-0  avia-builder-el-first  first flex_column_div '> 
+    ";
+    //	
+    //
+    // In Ihrer WordPress-Vorlagendatei (z.B., single.php)
+    //
+    $categories = get_categories(array('taxonomy' => 'lt_virtuelles_kulturhaus'));
+    $selected_category = isset($_COOKIE['selected_category']) ? $_COOKIE['selected_category'] : '';
+
+    echo '<form method="post" action="">';
+    echo '<select name="selected_category">';
+    foreach ($categories as $category) {
+        $selected = ($category->slug === $selected_category) ? 'selected' : '';
+        echo '<option value="' . $category->slug . '" ' . $selected . '>' . $category->name . '</option>';
+    }
+    echo '</select>';
+    echo '<input type="submit" name="category_submit" value="Kategorie auswählen">';
+    echo '</form>';
+
+    if (isset($_POST['category_submit'])) {
+        $selected_category = sanitize_text_field($_POST['selected_category']);
+        setcookie('selected_category', $selected_category, time() + 3600, '/');
+        // Oder für Sessions:
+        // session_start();
+        // $_SESSION['selected_category'] = $selected_category;
+    }
+
+
+    echo " 
+    </div></div><!-- End container-->
+        ";
+}// END leuchtturm_masonry
+
+//
+add_action( 'ava_after_main_container', 'leuchttuerme_cat_dropdown' );
+
+endif;
+
+
+
+
+
+
+
+
 /* _________________  Leuchttuerme Virtuelles Kulturkaus   Function  ________________ */
 
 /* ______________________________________________________________________________________
@@ -109,6 +174,18 @@ add_action( 'ava_after_main_container', 'leuchttuerme_vk_navi' );
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 /* ------------------------------------------------------------------------------------
  		    	leuchttuerme_postnavigation < pref and next posts >
    _____________________________________________________________________________________
@@ -132,14 +209,13 @@ if ( !is_archive() ):
         */
 
         // Get the terms for the current post
+        /**/  
         echo "  <div class='post-links'><div class='pref'> ";
         echo next_post_link('%link', '', $in_same_term = true, $excluded_terms = '', $taxonomy = 'lt_virtuelles_kulturhaus');
         echo "  </div> <div class='next'>";
         echo previous_post_link('%link', '', $in_same_term = true, $excluded_terms = '', $taxonomy = 'lt_virtuelles_kulturhaus');
         echo "  </div></div> ";
-
-
-
+        
         // END the Navigation
 
         // } // END if $leuchttuerme->have_posts();
@@ -213,6 +289,13 @@ if ( !is_archive() ):
         add_action( 'ava_before_footer', 'leuchttuerme_masonry' );
 
 endif;
+
+
+
+
+
+
+
 
 
 

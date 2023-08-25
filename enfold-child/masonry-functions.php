@@ -38,221 +38,222 @@ function ava_before_footer_mod() {
     endif;
     
 }
-add_action('ava_before_footer', 'ava_before_footer_mod', 100);
+add_action('ava_before_footer', 'ava_before_footer_mod', 999);
 
  
 /*   	     		  jQuery in to the Footer     
 ********************************************************  */
 
 function footer_jquery() { 
-	
-	
-?><script>jQuery( document ).ready( function ($) {
+		
+	?>
 
-	//   ____________________   Einblendung der TG Masonry
-	//
-	var topoffset =  $('#header').height();
-	   //
-	function  FadeIn( $thisis, topoffset){
-					//$param.hide();  
-				 $thisis.css({  "z-index": '400'  });
-				 $thisis.css({  "display": 'block'  }); 
-				 $thisis.animate({ 
-							top: topoffset,
-							opacity: '1' 
-						}, 200, function() { // Code to call upon
-				//  $thisis.addClass('fullvisible'); 
-				 $thisis.find('.av-masonry').css({  "top":  0 });
-			   //    
-			  }); 
-	};// END FadeIn
+	<script>jQuery( document ).ready( function ($) {
 
-	function FadeOut($thisis){
-		$thisis.animate({
-					 top: '30',
-					opacity: '0'  
-						},100, function() { // Code to call upon 
-				$thisis.css({  "display": 'none'  });
-				$thisis.find('.av-masonry').css({  "top":  0 });
-
-
-		}); 
-
-	}; // END FadeOut
-        
-	// ____________________  Moussessions for masonry Header Navigation
-	var timer; 
-		/* **********************  Theoretische Grundlagen */	
-		$('.tg').hover(function() {
-			  topoffset =  $('#header').height() ;
-			// on mouse in, start a timeout
-			timer = setTimeout(function() {
-			 	FadeOut( $('#op_masonry') );   
-				FadeOut( $('#extras') );
-				FadeOut( $('#vertief_masonry') ); 
-					FadeIn( $('#tg_masonry'), topoffset );   
-				//  to reload masonry items
-				$(window).trigger('resize');    
-			}, 600);
-		}, function() {
-			// on mouse out, cancel the timer
-			clearTimeout(timer);
-		});	
-		/* **********************  Orientierungsplan */	
-		$('.op').hover(function() {
-			  topoffset =  $('#header').height() ;
-			// on mouse in, start a timeout
-			timer = setTimeout(function() {
-			 	FadeOut( $('#tg_masonry') );   
-				FadeOut( $('#extras') ); 
-				FadeOut( $('#vertief_masonry') ); 
-					FadeIn( $('#op_masonry'), topoffset );  
-				// to reload masonry items
-				$(window).trigger('resize');   
-			}, 600);
-		}, function() {
-			// on mouse out, cancel the timer
-			clearTimeout(timer);
-		});		
-		/* **********************  Extras */			
-		$('.extras.hiddenmega').hover(function() {
-			  topoffset =  $('#header').height() ;
-			// on mouse in, start a timeout
-			timer = setTimeout(function() {
-			 FadeOut( $('#tg_masonry') );  
-			 FadeOut( $('#op_masonry')   ); 
-			 FadeOut( $('#vertief_masonry') ); 
-				 FadeIn( $('#extras'), topoffset ); 
-				 // to reload masonry items
-				$(window).trigger('resize');  
-			}, 600);
-		}, function() {
-			// on mouse out, cancel the timer
-			clearTimeout(timer);
-		});
-		/* **********************  Vertiefungen */			
-		$('.vertief.hiddenmega').hover(function() {
-			  topoffset =  $('#header').height() ;
-			console.log(topoffset);
-			// on mouse in, start a timeout
-			timer = setTimeout(function() {
-			 FadeOut( $('#tg_masonry') );  
-			FadeOut( $('#op_masonry') );  
-			FadeOut( $('#extras') ); 
-				 FadeIn( $('#vertief_masonry'), topoffset ); 
-				 // to reload masonry items
-				$(window).trigger('resize');  
-			}, 600);
-		}, function() {
-			// on mouse out, cancel the timer
-			clearTimeout(timer);
-		});
-
-
-
-
+		//   ____________________   Einblendung der TG Masonry
 		//
-		/*
-		$( '#tg_masonry .av-masonry' ).on('mouseover', function() {  
-			 Showin( $('#tg_masonry'), topoffset );   
-		}); 
-		*/
-		//    
-			$(document).mouseleave(function() {
-			   // console.log('out');
+		var topoffset =  $('#header').height();
+		//
+		function  FadeIn( $thisis, topoffset){
+						//$param.hide();  
+					$thisis.css({  "z-index": '400'  });
+					$thisis.css({  "display": 'block'  }); 
+					$thisis.animate({ 
+								top: topoffset,
+								opacity: '1' 
+							}, 200, function() { // Code to call upon
+					//  $thisis.addClass('fullvisible'); 
+					$thisis.find('.av-masonry').css({  "top":  0 });
+				//    
+				}); 
+		};// END FadeIn
+
+		function FadeOut($thisis){
+			$thisis.animate({
+						top: '30',
+						opacity: '0'  
+							},100, function() { // Code to call upon 
+					$thisis.css({  "display": 'none'  });
+					$thisis.find('.av-masonry').css({  "top":  0 });
+
+
+			}); 
+
+		}; // END FadeOut
+			
+		// ____________________  Moussessions for masonry Header Navigation
+		var timer; 
+			/* **********************  Theoretische Grundlagen */	
+			$('.tg').hover(function() {
+				topoffset =  $('#header').height() ;
+				// on mouse in, start a timeout
+				timer = setTimeout(function() {
+					FadeOut( $('#op_masonry') );   
+					FadeOut( $('#extras') );
+					FadeOut( $('#vertief_masonry') ); 
+						FadeIn( $('#tg_masonry'), topoffset );   
+					//  to reload masonry items
+					$(window).trigger('resize');    
+				}, 600);
+			}, function() {
+				// on mouse out, cancel the timer
+				clearTimeout(timer);
+			});	
+			/* **********************  Orientierungsplan */	
+			$('.op').hover(function() {
+				topoffset =  $('#header').height() ;
+				// on mouse in, start a timeout
+				timer = setTimeout(function() {
+					FadeOut( $('#tg_masonry') );   
+					FadeOut( $('#extras') ); 
+					FadeOut( $('#vertief_masonry') ); 
+						FadeIn( $('#op_masonry'), topoffset );  
+					// to reload masonry items
+					$(window).trigger('resize');   
+				}, 600);
+			}, function() {
+				// on mouse out, cancel the timer
+				clearTimeout(timer);
+			});		
+			/* **********************  Extras */			
+			$('.extras.hiddenmega').hover(function() {
+				topoffset =  $('#header').height() ;
+				// on mouse in, start a timeout
+				timer = setTimeout(function() {
+				FadeOut( $('#tg_masonry') );  
+				FadeOut( $('#op_masonry')   ); 
+				FadeOut( $('#vertief_masonry') ); 
+					FadeIn( $('#extras'), topoffset ); 
+					// to reload masonry items
+					$(window).trigger('resize');  
+				}, 600);
+			}, function() {
+				// on mouse out, cancel the timer
+				clearTimeout(timer);
+			});
+			/* **********************  Vertiefungen */			
+			$('.vertief.hiddenmega').hover(function() {
+				topoffset =  $('#header').height() ;
+				console.log(topoffset);
+				// on mouse in, start a timeout
+				timer = setTimeout(function() {
 				FadeOut( $('#tg_masonry') );  
 				FadeOut( $('#op_masonry') );  
-				FadeOut( $('#extras') );
-				FadeOut( $('#vertief_masonry') ); 
-
+				FadeOut( $('#extras') ); 
+					FadeIn( $('#vertief_masonry'), topoffset ); 
+					// to reload masonry items
+					$(window).trigger('resize');  
+				}, 600);
+			}, function() {
+				// on mouse out, cancel the timer
+				clearTimeout(timer);
 			});
-			$('.av-logo-container').on('mouseover ', function() {  
+
+
+			//
+			/*
+			$( '#tg_masonry .av-masonry' ).on('mouseover', function() {  
+				Showin( $('#tg_masonry'), topoffset );   
+			}); 
+			*/
+			//    
+				$(document).mouseleave(function() {
+				// console.log('out');
 					FadeOut( $('#tg_masonry') );  
 					FadeOut( $('#op_masonry') );  
-					FadeOut( $('#extras') );  
+					FadeOut( $('#extras') );
 					FadeOut( $('#vertief_masonry') ); 
 
-			}); // END deactivate
-		 //   
-						$('#tg_masonry').on('mouseleave ', function() {  
-							   setTimeout(function() {
-									FadeOut( $('#tg_masonry')  ); 
-								}, 200);
-						}); // END deactivate
-						$('#op_masonry').on('mouseleave ', function() {  
-							   setTimeout(function() {
-									FadeOut( $('#op_masonry')  ); 
-								}, 200);
-						}); // END deactivate    
-						$('#extras').on('mouseleave ', function() {  
-							   setTimeout(function() {
-									FadeOut( $('#extras')  ); 
-								}, 200);
-						}); // END deactivate    
-						$('#vertief_masonry').on('mouseleave ', function() {  
-							   setTimeout(function() {
-									FadeOut( $('#vertief_masonry')  ); 
-								}, 200);
-						}); // END deactivate    
+				});
+				$('.av-logo-container').on('mouseover ', function() {  
+						FadeOut( $('#tg_masonry') );  
+						FadeOut( $('#op_masonry') );  
+						FadeOut( $('#extras') );  
+						FadeOut( $('#vertief_masonry') ); 
+
+				}); // END deactivate
+			//   
+							$('#tg_masonry').on('mouseleave ', function() {  
+								setTimeout(function() {
+										FadeOut( $('#tg_masonry')  ); 
+									}, 200);
+							}); // END deactivate
+							$('#op_masonry').on('mouseleave ', function() {  
+								setTimeout(function() {
+										FadeOut( $('#op_masonry')  ); 
+									}, 200);
+							}); // END deactivate    
+							$('#extras').on('mouseleave ', function() {  
+								setTimeout(function() {
+										FadeOut( $('#extras')  ); 
+									}, 200);
+							}); // END deactivate    
+							$('#vertief_masonry').on('mouseleave ', function() {  
+								setTimeout(function() {
+										FadeOut( $('#vertief_masonry')  ); 
+									}, 200);
+							}); // END deactivate    
 
 
-        
-//    
-// on resize and scroll
-     var lastScrollTop = 0, delta = 5;
-
-
-        $(window).on('resize scroll', function() { 
-           
-		    var currentpos1 = 0; 
-            var currentpos2 = 0; 
-            //
-            if ( $('#tg_masonry').hasClass('masonrynav')  ) {
-                 var currentpos1 = $('#tg_masonry .av-masonry ').position().top;
-            }; 
-            // END if
-            if ( $('#op_masonry').hasClass('masonrynav')  ) { 
-               var currentpos2 = $('#op_masonry .av-masonry ').position().top; 
-            }; // END if
-            //
 			
-            topoffset =  $('#header').height(); 
-            $('#tg_masonry, #op_masonry, #extras, #vertief_masonry ').css({  "top":  topoffset  });
-             //  console.log(currentpos); 
-            // 
-            if( $(window).scrollTop() < 30 ) {
-                
-               //  console.log(' Oben isnull')
-                topoffset =  $('#header').height(); 
-                //
-                currentpos1 = 0;
-                currentpos2 = 0;
-                //
-                $('#tg_masonry, #op_masonry, #extras, #vertief_masonry ').css({  "top":  topoffset  });
-                $('#tg_masonry .av-masonry, #op_masonry .av-masonry' , '#vertief_masonry .av-masonry' ).css({  "top":  $('.av-main-nav').height() });   // 
-             
-            }
-            else{
-                $('#tg_masonry', '#op_masonry', '#vertief_masonry'  ).css({  "top": topoffset  });
-     
-                     var nowScrollTop = $(this).scrollTop();
-                    // console.log("nowScrollTop " + nowScrollTop ); 
-                  
-                  
-            } // end else 
-          
-        });
+	//    
+	// on resize and scroll
+		var lastScrollTop = 0, delta = 5;
 
-        */
-        // scroll / resize the masonry 
-      //
-       
-   //
-   //
-   //
-}); // END Doc ready
-//
-</script><?php   }
+			$(window).on('resize scroll', function() { 
+			/*
+				var currentpos1 = 0; 
+				var currentpos2 = 0; 
+				//
+				
+				if ( $('#tg_masonry').hasClass('masonrynav')  ) {
+					var currentpos1 = $('#tg_masonry .av-masonry ').position().top;
+				}; 
+				// END if
+				if ( $('#op_masonry').hasClass('masonrynav')  ) { 
+				var currentpos2 = $('#op_masonry .av-masonry ').position().top; 
+				}; // END if
+				//
+				*/
+				
+				topoffset =  $('#header').height(); 
+				$('#tg_masonry, #op_masonry, #extras, #vertief_masonry ').css({  "top":  topoffset  });
+				//  console.log(currentpos); 
+				// 
+				if( $(window).scrollTop() < 30 ) {
+					
+				//  console.log(' Oben isnull')
+					topoffset =  $('#header').height(); 
+					//
+					currentpos1 = 0;
+					currentpos2 = 0;
+					//
+					$('#tg_masonry, #op_masonry, #extras, #vertief_masonry ').css({  "top":  topoffset  });
+					$('#tg_masonry .av-masonry, #op_masonry .av-masonry' , '#vertief_masonry .av-masonry' ).css({  "top":  $('.av-main-nav').height() });   // 
+				
+				}
+				else{
+					$('#tg_masonry', '#op_masonry', '#vertief_masonry'  ).css({  "top": topoffset  });
+		
+						var nowScrollTop = $(this).scrollTop();
+						// console.log("nowScrollTop " + nowScrollTop ); 
+					
+					
+				} // end else 
+			
+			});
+
+			// scroll / resize the masonry 
+		//
+		
+	//
+	//
+	//
+	}); // END Doc ready
+	//
+	</script>
+	<?php   
+}
 add_action( 'wp_footer', 'footer_jquery', 10 , 10 );
 // END Scroll ////
 

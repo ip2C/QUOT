@@ -11,15 +11,15 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 // INCLUDE
 // include the functions for CPT - ACF filter and relationships   
 //
- require_once "functions-enfold.php";
+require_once "functions-enfold.php";
+//
+require_once "masonry-functions.php";
 //
  require_once "js-functions.php";
 //
  require_once "reg_cpt-functions.php";
 //
  require_once "cpt_acf-functions.php";
-//
- require_once "masonry-functions.php";
 //
 function load_leuchttuerme_functions() {
     if ( is_singular(array('leuchttuerme') ) ) {
@@ -34,7 +34,6 @@ function custom_archive_logic() {
     }
 }
 add_action('template_redirect', 'custom_archive_logic');
-
 
 
 
@@ -71,6 +70,7 @@ add_action(
 
 
 
+
 /* 
 RE  				Remove Enfold CSS aus Plugins (Theme)
 **************************************************************************** */
@@ -93,6 +93,7 @@ function wpdocs_theme_name_scripts() {
      wp_enqueue_style( 'style',  get_stylesheet_uri()  , array(), time() );
 }
 add_action( 'wp_print_styles', 'wpdocs_theme_name_scripts', 10, 999 );
+
 
 
 
