@@ -87,7 +87,6 @@ function  leuchttuerme_vk_navi( )  {
                 if ($terms) {
                     foreach ($terms as $term) {
                         $class = ($current_term && $current_term->term_id === $term->term_id) ? 'active' : '';
-
                         echo '<a class="' . $class . ' avia-button avia-icon_select-yes-left-icon avia-size-small av-button-notext avia-color-theme-color" href="' . esc_url(get_term_link($term)) . '">' . esc_html($term->name) . '</a>';
                         } // END foreach
                     } // END if term
@@ -122,11 +121,24 @@ if ( !is_archive() ):
          * here we check the previous and next post in term
          * previous_post_link('%link', ' name ', $in_same_term = true, $excluded_terms = '', $taxonomy = 'taxonomy_name') ;
         */
-        echo "  <div class='post-links'><div class='pref'> ";
-        echo previous_post_link('%link', '', $in_same_term = true, $excluded_terms = '', $taxonomy = 'lt_virtuelles_kulturhaus');
+       /*
+
+       echo "  <div class='post-links'><div class='pref'> ";
+
+        echo next_post_link('%link', '', $in_same_term = true, $excluded_terms = '', $taxonomy = 'lt_virtuelles_kulturhaus');
         echo "  </div> <div class='next'>";
-        echo next_post_link('%link', '', $in_same_term = true, $excluded_terms = '', $taxonomy = 'lt_virtuelles_kulturhaus');
+        echo previous_post_link('%link', '', $in_same_term = true, $excluded_terms = '', $taxonomy = 'lt_virtuelles_kulturhaus');
         echo "  </div></div> ";
+        */
+
+        // Get the terms for the current post
+        echo "  <div class='post-links'><div class='pref'> ";
+        echo next_post_link('%link', '', $in_same_term = true, $excluded_terms = '', $taxonomy = 'lt_virtuelles_kulturhaus');
+        echo "  </div> <div class='next'>";
+        echo previous_post_link('%link', '', $in_same_term = true, $excluded_terms = '', $taxonomy = 'lt_virtuelles_kulturhaus');
+        echo "  </div></div> ";
+
+
 
         // END the Navigation
 

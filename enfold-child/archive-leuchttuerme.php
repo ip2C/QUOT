@@ -8,15 +8,12 @@ require_once "leuchttuerme-functions.php";
 
 
 
-
-
 //  We add the same body class to the header
 function custom_bodyclass($classes) {
     $classes[] = 'leuchttuerme-template-default';
     return $classes;
 }
 add_filter('body_class', 'custom_bodyclass');
-
 
 
 
@@ -41,11 +38,6 @@ get_header();
             <main class='content <?php avia_layout_class( 'content' ); ?> units' <?php avia_markup_helper( array( 'context' => 'content', 'post_type' => 'post' ) );?>>
 
                 <?php
-                /* $tds = term_description();
-                      if( $tds ) {
-                         echo "<div class='category-term-description'>{$tds}</div>";
-                   }
-                 */
                 // Get the current archive object
                 // get the current taxonomy term
                 $term = get_queried_object();
@@ -59,8 +51,8 @@ get_header();
                     $imageurl = get_field('bild_der_kategorie', $term);
                     $text_right = get_field('text_rechts', $term);
                 }
-
                 ?>
+                
 
                 <div class='post-entry post-entry-type-page'><div class='entry-content-wrapper clearfix'><div class='flex_column_table sc-av_one_half av-equal-height-column-flextable'>
                             <div class='flex_column av_one_half  avia-builder-el-0  el_before_av_one_half  avia-builder-el-first  first flex_column_table_cell av-equal-height-column av-align-bottom  '>
@@ -75,7 +67,6 @@ get_header();
                                 <section class='av_textblock_section av-sdi ' itemscope='itemscope' itemtype='https://schema.org/CreativeWork'><div class='avia_textblock' itemprop='text'>
                                         <p>
                                             <img decoding='async' class='size-full' src='<?php echo esc_html($imageurl) ?>' alt='image für Einstiegsseite der Leuchttürme' width='600' height='133'>
-
                                         </p>
                                     </div></section></div></div><!--close column table wrapper. Autoclose: 1 -->
                         <div class='flex_column av_one_half  avia-builder-el-4  el_after_av_one_half  el_before_av_one_half  first flex_column_div  column-top-margin'>
@@ -83,10 +74,10 @@ get_header();
                                 <div class='avia_textblock' itemprop='text'>
                                     <p>
                                         <?php  $tds = term_description();
-                                        if( $tds ) {
-                                            echo "<span class='category-term-description'>{$tds}</span>";
-                                        }
-                                        echo "<span class='text'>{$text_left}</span>";
+                                            if( $tds ) {
+                                                echo "<span class='category-term-description'>{$tds}</span>";
+                                            }
+                                            echo "<span class='text'>{$text_left}</span>";
                                         ?>
                                     </p>
                                 </div>
@@ -122,7 +113,7 @@ get_header();
                                         wp_reset_postdata(); // Reset the post data to the main query
                                     }
                                 ?>
-                                <a href='<?php echo esc_url($first_post_link); ?>' class='avia-button avia-icon_select-yes-right-icon avia-size-medium avia-position-right avia-color-theme-color' target='_blank' rel='noopener noreferrer'>
+                                <a href='<?php echo esc_url($first_post_link); ?>' class='avia-button avia-icon_select-yes-right-icon avia-size-medium avia-position-right avia-color-theme-color' target='_self' rel='noopener noreferrer'>
                                         Mehr
                                     <span class='avia_button_icon avia_button_icon_right' aria-hidden='true' data-av_icon='' data-av_iconfont='entypo-fontello'> </span>
                                 </a>
@@ -131,17 +122,12 @@ get_header();
                     </div>
                 </div>
 
-
                 <?php
-
-
-                // Initialize the active term ID and name as null
-
-                $archive_page_id = get_queried_object_id();
-                $archive_name = $current_archive->name;
-                //
-                // Output the section content
-
+                    // Initialize the active term ID and name as null
+                    $archive_page_id = get_queried_object_id();
+                    $archive_name = $current_archive->name;
+                    //
+                    // Output the section content
                 ?>
 
                 </div> <!-- close main container -->
@@ -168,7 +154,6 @@ get_header();
                                </div>
                              </div><!-- close content main div -->
                          </div>
-
 
 
                   </div> <!--end content-->

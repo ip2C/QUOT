@@ -508,7 +508,7 @@ ts-nav__thumbnail img {
 /* post navigation */
 .post-links{
     position: fixed;
-    top: 49vh;
+    top: 48.6vh;
     z-index: 1;
     transform: translateY(-50%);
 }
@@ -527,12 +527,12 @@ ts-nav__thumbnail img {
  }
 .post-links .pref{
     position: absolute;
-    left: 0vw;   /* exact position in thwe innerwidth when the size is bigger then 1340px*/
+    left: 0px;   /* exact position in thwe innerwidth when the size is bigger then 1340px*/
 }
 .post-links .next{
     position: absolute;
     left: 100vw;
-    margin-left: -3.2vmin !important;
+    margin-left: -32px !important;
 }
 @media (min-width: 1320px) {
     .post-links .pref{
@@ -571,12 +571,7 @@ ts-nav__thumbnail img {
     padding-top: 30px;
 }
 /* accordoion in Leuchttuerme */
-.leuchttuerme-template-default .text.as-always{
-    min-height: 360px;
-    height: 30vh !important;
-    max-height: 520px;
-}
-.leuchttuerme-template-default iframe{
+.leuchttuerme-template-default .text.as-always, .leuchttuerme-template-default iframe{
     height: 400px !important;
 }
 
