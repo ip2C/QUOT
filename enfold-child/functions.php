@@ -8,6 +8,11 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  
 
+
+
+
+
+
 // INCLUDE
 // include the functions for CPT - ACF filter and relationships   
 //
@@ -15,11 +20,11 @@ require_once "functions-enfold.php";
 //
 require_once "masonry-functions.php";
 //
- require_once "js-functions.php";
+require_once "js-functions.php";
 //
- require_once "reg_cpt-functions.php";
+require_once "reg_cpt-functions.php";
 //
- require_once "cpt_acf-functions.php";
+require_once "cpt_acf-functions.php";
 //
 function load_leuchttuerme_functions() {
     if ( is_singular(array('leuchttuerme') ) ) {
@@ -30,7 +35,7 @@ add_action('template_redirect', 'load_leuchttuerme_functions');
 function custom_archive_logic() {
     $idpost = get_the_ID();
     if (is_archive() && get_post_type() == "leuchttuerme"  ) {
-        get_template_part('archive', 'leuchttuerme');
+        get_template_part('archive', 'leuchttuerme');		
     }
 }
 add_action('template_redirect', 'custom_archive_logic');
@@ -39,6 +44,15 @@ add_action('template_redirect', 'custom_archive_logic');
 
 
 /* END include */
+
+
+
+
+
+
+
+
+
 
 
 

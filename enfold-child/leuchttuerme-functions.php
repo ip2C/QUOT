@@ -10,6 +10,22 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * */
 
 
+if (isset($_COOKIE['c_termname'])) {
+    $term_name_f_cookie = $_COOKIE['c_termname'];
+    $term_ID_f_cookie = $_COOKIE['c_termID'];
+    // Use $term_name in your other functions
+    echo "// Cookie : " . $term_name_f_cookie;
+    echo "// Cookie ID : " . $term_ID_f_cookie;
+} // END if	
+
+
+
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+
+
 
 // https://kriesi.at/documentation/enfold/hooks-and-filters/
 /*	ava_main_header
@@ -26,67 +42,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	ava_before_footer
 	ava_mailchimp_contact_form_elements
 */
-
-
-
-
-
-
-
-
-
-/* _______________________________________________________________________
-
- 		  Test of the Dropdown Chat GPT
-   _______________________________________________________________________  
-*/
-
-if ( !is_archive() ):
-    
-function  leuchttuerme_cat_dropdown( )  {
-
-    // 
-    echo" 
-    <div class='container av-section-cont-open '>
-    <div class='flex_column av_one_half avia-builder-el-0  avia-builder-el-first  first flex_column_div '> 
-    ";
-    //	
-    //
-    // In Ihrer WordPress-Vorlagendatei (z.B., single.php)
-    //
-    $categories = get_categories(array('taxonomy' => 'lt_virtuelles_kulturhaus'));
-    $selected_category = isset($_COOKIE['selected_category']) ? $_COOKIE['selected_category'] : '';
-
-    echo '<form method="post" action="">';
-    echo '<select name="selected_category">';
-    foreach ($categories as $category) {
-        $selected = ($category->slug === $selected_category) ? 'selected' : '';
-        echo '<option value="' . $category->slug . '" ' . $selected . '>' . $category->name . '</option>';
-    }
-    echo '</select>';
-    echo '<input type="submit" name="category_submit" value="Kategorie auswählen">';
-    echo '</form>';
-
-    if (isset($_POST['category_submit'])) {
-        $selected_category = sanitize_text_field($_POST['selected_category']);
-        setcookie('selected_category', $selected_category, time() + 3600, '/');
-        // Oder für Sessions:
-        // session_start();
-        // $_SESSION['selected_category'] = $selected_category;
-    }
-
-
-    echo " 
-    </div></div><!-- End container-->
-        ";
-}// END leuchtturm_masonry
-
-//
-add_action( 'ava_after_main_container', 'leuchttuerme_cat_dropdown' );
-
-endif;
-
-
 
 
 
@@ -125,17 +80,27 @@ function  leuchttuerme_vk_navi( )  {
         //  case  SINGLE
          if ( is_singular(array('leuchttuerme') ) ) {
 
-             // Get all terms for the taxonomy
-             $terms = get_terms('lt_virtuelles_kulturhaus', array('hide_empty' => false));
-            if ( $terms ) {
-                // echo $term->ID;
-                foreach ( $terms as $term ) {
+            // Get all terms for the taxonomy
+            $terms = get_terms('lt_virtuelles_kulturhaus', array('hide_empty' => false));
+
+            // Check if the cookie is set and get its value
+            $cookie_name = 'c_termname'; // Change to your cookie name
+            $cookie_value = isset($_COOKIE[$cookie_name]) ? $_COOKIE[$cookie_name] : '';
+
+           // echo $cookie_value;
+
+            if ($terms) {
+                foreach ($terms as $term) {
                     $class = '';
-                    if ( is_array( $current_term_id ) && in_array( $term->term_id, $current_term_id ) ) {
+
+                   // Check if the cookie value matches the term name
+                    if ($cookie_value == $term->name) { // Use '==' for loose comparison
                         $class = 'active';
-                    } // END if current term
-                    echo '<a class=" ' . $class .  ' avia-button avia-icon_select-yes-left-icon avia-size-small av-button-notext avia-color-theme-color" href="' . get_term_link( $term ) . '">' . esc_html( $term->name ) . '</a>  ';
-                } // END foreach
+                    }
+
+                    // Add an id attribute with the term ID to the anchor element
+                    echo '<a id="term-' . $term->term_id . '" class="' . $class . ' avia-button avia-icon_select-yes-left-icon avia-size-small av-button-notext avia-color-theme-color" href="' . get_term_link($term) . '">' . $term->name . '</a> ';
+                }
             } // END if terms
         } // END if singular
         //
@@ -190,39 +155,74 @@ add_action( 'ava_after_main_container', 'leuchttuerme_vk_navi' );
  		    	leuchttuerme_postnavigation < pref and next posts >
    _____________________________________________________________________________________
 */
-//
 if ( !is_archive() ):
-    function leuchttuerme_postnav()
-    {
-        /*
-         * here we check the previous and next post in term
-         * previous_post_link('%link', ' name ', $in_same_term = true, $excluded_terms = '', $taxonomy = 'taxonomy_name') ;
-        */
-       /*
+    //
+    function leuchttuerme_postnav(){
+        // Check if the cookie for term ID is set and get its value
+        $cookie_name = 'c_termID'; // Change to your cookie name for term ID
+        $term_ID_f_cookie = isset($_COOKIE[$cookie_name]) ? $_COOKIE[$cookie_name] : '';
 
-       echo "  <div class='post-links'><div class='pref'> ";
-
-        echo next_post_link('%link', '', $in_same_term = true, $excluded_terms = '', $taxonomy = 'lt_virtuelles_kulturhaus');
-        echo "  </div> <div class='next'>";
-        echo previous_post_link('%link', '', $in_same_term = true, $excluded_terms = '', $taxonomy = 'lt_virtuelles_kulturhaus');
-        echo "  </div></div> ";
-        */
+        // Get the current post
+        global $post;
 
         // Get the terms for the current post
-        /**/  
-        echo "  <div class='post-links'><div class='pref'> ";
-        echo next_post_link('%link', '', $in_same_term = true, $excluded_terms = '', $taxonomy = 'lt_virtuelles_kulturhaus');
-        echo "  </div> <div class='next'>";
-        echo previous_post_link('%link', '', $in_same_term = true, $excluded_terms = '', $taxonomy = 'lt_virtuelles_kulturhaus');
-        echo "  </div></div> ";
-        
-        // END the Navigation
+        $terms = get_the_terms($post->ID, 'lt_virtuelles_kulturhaus');
 
-        // } // END if $leuchttuerme->have_posts();
-    } // END leuchttuerme_postnav
-    //
-    add_action('ava_before_footer', 'leuchttuerme_postnav');
-endif; // END if
+        if (isset($term_ID_f_cookie) && !empty($term_ID_f_cookie)) {
+            // Use the term ID from the cookie to navigate posts
+            $term_id_to_use = $term_ID_f_cookie;
+        } elseif ($terms) {
+            // Use the term ID from the current post's terms if the cookie is not set
+            $term_id_to_use = $terms[0]->term_id;
+        } else {
+            // Default to a fallback term ID or handle this case as needed
+            $term_id_to_use = 0; // Change this to your desired fallback behavior
+        }
+
+        // Get the posts based on the selected term ID
+        $args = array(
+            'post_type' => 'leuchttuerme', // Replace with your post type
+            'posts_per_page' => -1, // Retrieve all posts
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'lt_virtuelles_kulturhaus',
+                    'field' => 'id',
+                    'terms' => $term_id_to_use, // Use the selected term ID
+                ),
+            ),
+        );
+
+        $posts_query = new WP_Query($args);
+
+        // Find the current post's position in the posts array
+        $current_post_index = array_search($post->ID, wp_list_pluck($posts_query->posts, 'ID'));
+
+        // Output navigation links based on the retrieved posts
+        echo '<div class="post-links"><div class="prev">';
+
+        $prev_post = isset($posts_query->posts[$current_post_index - 1]) ? $posts_query->posts[$current_post_index - 1] : null;
+        if ($prev_post) {
+            echo '<a href="' . get_permalink($prev_post) . '"></a>';
+        }
+
+        echo '</div> <div class="next">';
+
+        $next_post = isset($posts_query->posts[$current_post_index + 1]) ? $posts_query->posts[$current_post_index + 1] : null;
+        if ($next_post) {
+            echo '<a href="' . get_permalink($next_post) . '"></a>';
+        }
+
+        echo '</div></div>';
+    }
+
+    // Add the function to the appropriate action hook
+    add_action('ava_before_footer', 'leuchttuerme_postnav', 9);
+
+endif;
+
+
+
+
 
 
 
@@ -244,32 +244,19 @@ endif; // END if
 if ( !is_archive() ):
         function  leuchttuerme_masonry( )  {
 
-             // Initialize the active term ID as null
-            $active_term_id = null;
 
-            // Get the current term ID for the post
-            $current_term_id = wp_get_post_terms(get_the_ID(), 'lt_virtuelles_kulturhaus', array('fields' => 'ids'));
+        if (isset($_COOKIE['c_termname'])) {
+            $term_name_f_cookie = $_COOKIE['c_termname'];
+            $term_ID_f_cookie = $_COOKIE['c_termID']; 
+        } // END if	
 
-            // Output the terms as navigation
-            if ($terms = get_terms('lt_virtuelles_kulturhaus', array('hide_empty' => false))) {
-                foreach ($terms as $term) {
-                    if (is_array($current_term_id) && in_array($term->term_id, $current_term_id)) {
-                        // Store the ID of the active term
-                        $active_term_id = $term->term_id;
-                        $active_term_name = $term->name;
-                    }
-                } // END  foreach
-            } // END terms
 
-            // Return the active term ID
-            // echo $active_term_id;
-
-        echo
+       echo
             do_shortcode( "
                 [av_section min_height='' min_height_pc='25' min_height_px='500px' shadow='no-border-styling' bottom_border='no-border-styling' padding='' margin='' color='footer_color' background='bg_color' custom_bg=''  position='top left' repeat='no-repeat'overlay_opacity='0.5' overlay_color='' overlay_pattern='' av-small-css_position_z_index='' av-mini-css_position_z_index='' id='lt_footer_masonry' custom_class='' template_class='' aria_label='' element_template='' one_element_template='' av_element_hidden_in_editor='1' sc_version='1.0'] 
                 
                  <span class='floatleft' style='margin-bottom:18px'> 
-                    <h2><span style='color:#fff; margin-bottom:30px'> " . $active_term_name ."</span></h2>
+                    <h2><span style='color:#fff; margin-bottom:30px'> " .$term_name_f_cookie."  :  ".$term_ID_f_cookie. "</span></h2>
                     
                 </span> 
                      <a href='' class='lt_popup avia-button  avia-icon_select-yes-left-icon avia-size-small av-button-notext floatright'  style='background-color:transparent; box-shadow:none; border:none; font-size: 18px;'>
@@ -277,7 +264,7 @@ if ( !is_archive() ):
                             <span class='avia_iconbox_title'></span>
                         </a> 
         
-                [av_masonry_entries link='lt_virtuelles_kulturhaus,".$active_term_id."' wc_prod_visible='' wc_prod_hidden='hide'  wc_prod_featured='' prod_order_by='' prod_order='' date_filter='' date_filter_start='' date_filter_end='' date_filter_format='yy/mm/dd' period_filter_unit_1='1' period_filter_unit_2='year' sort='no' query_orderby='menu_order' query_order='ASC' caption_elements='title' caption_styling='overlay' caption_display='always' size='fixed' orientation='av-orientation-square' image_size='masonry' gap='no' columns='6' av-desktop-columns='' av-medium-columns='3' av-small-columns='2' av-mini-columns='2' items='-1' paginate='load_more' color='custom' custom_bg='' animation='active' animation_duration='' animation_custom_bg_color='' animation_custom_bg_color_multi_list='' animation_z_index_curtain='100' overlay_fx='grayscale' img_scrset='' lazy_loading='enabled' id='' custom_class='' template_class='' av_uid='av-lg9t7w89' sc_version='1.0']		
+                [av_masonry_entries link='lt_virtuelles_kulturhaus,".$term_ID_f_cookie."' wc_prod_visible='' wc_prod_hidden='hide'  wc_prod_featured='' prod_order_by='' prod_order='' date_filter='' date_filter_start='' date_filter_end='' date_filter_format='yy/mm/dd' period_filter_unit_1='1' period_filter_unit_2='year' sort='no' query_orderby='menu_order' query_order='ASC' caption_elements='title' caption_styling='overlay' caption_display='always' size='fixed' orientation='av-orientation-square' image_size='masonry' gap='no' columns='6' av-desktop-columns='' av-medium-columns='3' av-small-columns='2' av-mini-columns='2' items='-1' paginate='load_more' color='custom' custom_bg='' animation='active' animation_duration='' animation_custom_bg_color='' animation_custom_bg_color_multi_list='' animation_z_index_curtain='100' overlay_fx='grayscale' img_scrset='' lazy_loading='enabled' id='' custom_class='' template_class='' av_uid='av-lg9t7w89' sc_version='1.0']		
         
                 [/av_section]
         
@@ -286,13 +273,9 @@ if ( !is_archive() ):
 
         }// END leuchtturm_masonry
         //
-        add_action( 'ava_before_footer', 'leuchttuerme_masonry' );
+        add_action( 'ava_before_footer', 'leuchttuerme_masonry' , 9  );
 
 endif;
-
-
-
-
 
 
 
@@ -334,8 +317,6 @@ endif;
 add_action('ava_before_footer', 'do_shortcode_masonry', 9);
 
 
-
-
 function footer_script_lt() {
     	?>
          <script>
@@ -359,8 +340,7 @@ function footer_script_lt() {
 				var $destination = jQuery('.lt_shortcode_output');
 
 				jQuery($source).prependTo($destination);
-				jQuery($source).show();
-	 			//jQuery("#lt_masonry_gallerie").prependTo('.lt_shortcode_output')
+				jQuery($source).show(); 
 
 			});
         </script>
@@ -371,6 +351,47 @@ function footer_script_lt() {
 add_action('wp_footer', 'footer_script_lt', 9);
 
 
+
+
+
+
+/* _______________________________________________________________________________________
+
+ 			Clear Cookies on JQuery in between the masonry. 
+   ____________________________________________________________________________________
+*/
+
+function clearcookies() {
+    ?>  
+    <script>
+        jQuery(document).ready( function ($) {
+
+             // Function to reset the cookies
+            function resetCookies() {
+                // Reset the cookies here
+                document.cookie = "c_termname=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                document.cookie = "c_termID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            }
+
+    
+            // Detect when the popup containing the gallery is opened
+            $(document).on('click', '.lt_popup', function() {
+                // Set a timeout (e.g., 2000 milliseconds) before resetting the cookies
+                setTimeout(function() {
+                    resetCookies(); // Reset the cookies after the timeout
+                    console.log("Cookies reset.");
+
+                }, 5000); // Adjust the timeout duration as needed (measured in milliseconds)
+            });
+
+
+
+        }); // END JQuery Doc ready
+    </script>
+<?php
+
+}
+add_action('ava_before_footer', 'clearcookies', 999 );
 
 
 

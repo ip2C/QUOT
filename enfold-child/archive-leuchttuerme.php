@@ -2,8 +2,22 @@
 if( ! defined( 'ABSPATH' ) ) { die(); }
 
 
+
+$term = get_queried_object(); 
+// Output the current archive name 
+$current_archive_name = $term->name;
+$current_archive_id = $term->term_id;
+
+// Set session cookies for c_termname and c_termID
+setcookie('c_termname', $current_archive_name, 0, '/', 'qualitaetsoffensive-teilhabe.de');
+setcookie('c_termID', $current_archive_id, 0, '/', 'qualitaetsoffensive-teilhabe.de');
+
+
 //  we need some functions of the single page functions as well
 require_once "leuchttuerme-functions.php";
+
+
+
 
 
 //  We add the same body class to the header
@@ -14,24 +28,13 @@ function custom_bodyclass($classes) {
 add_filter('body_class', 'custom_bodyclass');
 
 
+
 /*
  * get_header is a basic wordpress function, used to retrieve the header.php file in your theme directory.
  */
 get_header();
 
 
-// In Ihrer Archivseite (z.B., archive.php oder category.php)
-$category_term = get_queried_object(); // Den aktuellen Kategoriebegriff abrufen
-if (!empty($category_term->slug)) {
-    // Starten Sie die PHP-Session, wenn noch nicht gestartet
-    if (!session_id()) {   session_start();   }
-    
-    // Kategoriebegriff in einer Session-Variablen speichern
-    $_SESSION['archive_category_term'] = $category_term->slug;
-    
-    // Das Session-Cookie setzen (gültig für die aktuelle Browsersitzung)
-    setcookie('archive_category_term', $category_term->slug, 0, '/');
-}
 
 
 
@@ -39,7 +42,6 @@ if (!empty($category_term->slug)) {
 
 
  <div class='leuchttuerme-template-default container_wrap container_wrap_first main_color <?php avia_layout_class( 'main' ); ?>'>
-
 
         <div class='container template-blog '>
 
@@ -60,7 +62,6 @@ if (!empty($category_term->slug)) {
                     $text_right = get_field('text_rechts', $term);
                 }
                 ?>
-
 
                 <div class='post-entry post-entry-type-page'><div class='entry-content-wrapper clearfix'><div class='flex_column_table sc-av_one_half av-equal-height-column-flextable'>
                             <div class='flex_column av_one_half  avia-builder-el-0  el_before_av_one_half  avia-builder-el-first  first flex_column_table_cell av-equal-height-column av-align-bottom  '>
@@ -145,7 +146,7 @@ if (!empty($category_term->slug)) {
                                  <div class="post-entry post-entry-type-page">
                                      <div class="entry-content-wrapper clearfix">
                                  <span class="floatleft" style="margin-bottom:18px">
-                                    <h2><span style="color:#fff; margin-bottom:30px">  <?php echo $archive_name ?> </span></h2>
+                                    <h2><span style="color:#fff; margin-bottom:30px">  <?php echo $archive_name . "  : " . $archive_page_id ?> </span></h2>
                                 </span>
                                      <a href="" class="lt_popup avia-button avia-icon_select-yes-left-icon avia-size-small av-button-notext floatright pum-trigger" style="background-color: transparent; color: #fff;  box-shadow: none; border: medium; font-size: 18px; cursor: pointer;">
                                                  Alle anzeigen &nbsp;<span class=" avia_button_icon avia_button_icon_left " aria-hidden="true" data-av_icon="" data-av_iconfont="entypo-fontello"></span>
@@ -174,4 +175,59 @@ if (!empty($category_term->slug)) {
 <?php
 
 
+
+
+
+
+/*
+* RE
+* Function to go navigate in to the first Posts  
+* Dies ist eine abgepeckte Version der Navigation innerhalb von: leuchttuerme-functions.php 
+/Users/iMacUser/Dropbox (Privat)/_2023__Qualitaetsoffensive/_git_QUOT/enfold-child/leuchttuerme-functions.php   Zeile 148
+*/ 
+function leuchttuerme_postnav_archive()
+{
+    if (is_archive()) {
+        // Get the current archive term ID
+        $term_id_to_use = get_queried_object()->term_id;
+
+        // Get the first post in the archive term
+        $args = array(
+            'post_type' => 'leuchttuerme', // Replace with your post type
+            'posts_per_page' => 1,
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'lt_virtuelles_kulturhaus',
+                    'field' => 'id',
+                    'terms' => $term_id_to_use,
+                ),
+            ),
+        );
+
+        $posts_query = new WP_Query($args);
+
+        // Output navigation link to the first post in the archive term
+        if ($posts_query->have_posts()) {
+            $first_post = $posts_query->posts[0];
+            echo '<div class="post-links"><div class="next">';
+            echo '<a href="' . get_permalink($first_post) . '"></a>';
+            echo '</div></div>';
+        }
+    }
+}
+
+// Add the function to the appropriate action hook
+add_action('ava_before_footer', 'leuchttuerme_postnav_archive', 9);
+
+
+
+
+
+
+
+
+
+
+
+//  Basic Wordpress function
 get_footer();

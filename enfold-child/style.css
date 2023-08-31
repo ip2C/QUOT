@@ -516,13 +516,13 @@ ts-nav__thumbnail img {
     font-family: 'entypo-fontello';
     text-decoration: none !important;
     -moz-osx-font-smoothing: grayscale;
-    color:#fff !important;
+    color:var(--red);!important;
     font-size: clamp(21px, 2.2vw, 33px);
     background-color: #dedede;
-    padding: 2vmin 1vmin;
+    padding: 2.2vmin .8vmin;
 }
 .post-links  a:hover {
-    color: var(--red) !important;
+    color: #fff !important;
     transition: all ease-in-out 0.2s;
  }
 .post-links .pref{
