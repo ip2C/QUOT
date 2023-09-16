@@ -596,8 +596,8 @@ ts-nav__thumbnail img {
 @media (min-width: 1320px) {
     .post-links .pref{
         position: absolute;
-        /*  left: calc(((100vw - 1340px) / 2 ) ); */  /* exact position left on the innerwidth */
-        /*  left: calc((100vw - 1320px)  * 0.25);  */  /* exact position in thwe innerwidth when the size is bigger then 1340px*/
+        /*left: calc(((100vw - 1340px) / 2 ) ); */  /* exact position left on the innerwidth*/
+        left: calc((100vw - 1320px)  * 0.25);   /* exact position in thwe innerwidth when the size is bigger then 1340px*/
     }
     .post-links .next{
         position: absolute;
@@ -618,24 +618,7 @@ ts-nav__thumbnail img {
 .lt_popup .avia_button_icon{
     font-size: 130%; 
     margin-bottom:-30px !important; 
-}.avia-slideshow::after{
-     position: absolute;
-     width: 100% !important;
-     height: 100% !important;
-     z-index: 100 !important;
-     top: 0 !important;
-     background-color: rgba(0,0,0,0.3);
- }
-#extra_text .av_textblock_section .avia_textblock p:first-child{
-    padding-top: 30px;
 }
-/* accordoion in Leuchttuerme */
-.leuchttuerme-template-default .text.as-always, .leuchttuerme-template-default iframe{
-    height: 400px !important;
-}
-
-/* END Leuchtturme */
-
 /* __________  Popup der Gallerie  _____  */
 #lt_masonry_gallerie{
     display: none;
