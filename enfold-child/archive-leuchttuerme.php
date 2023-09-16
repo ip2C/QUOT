@@ -4,7 +4,10 @@ if( ! defined( 'ABSPATH' ) ) { die(); }
 
 
 $term = get_queried_object(); 
+
 // Output the current archive name 
+
+
 $current_archive_name = $term->name;
 $current_archive_id = $term->term_id;
 
@@ -13,10 +16,9 @@ setcookie('c_termname', $current_archive_name, 0, '/', 'qualitaetsoffensive-teil
 setcookie('c_termID', $current_archive_id, 0, '/', 'qualitaetsoffensive-teilhabe.de');
 
 
+
 //  we need some functions of the single page functions as well
 require_once "leuchttuerme-functions.php";
-
-
 
 
 

@@ -2,21 +2,67 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+
+
+
+// Get the current post ID
+$post_ID = get_the_ID();
+
+// Get all terms (categories) associated with the current post
+$terms = get_the_terms($post_ID, 'lt_virtuelles_kulturhaus');
+
+if (is_singular('leuchttuerme') && is_array($terms)) {
+    // Get the first term in the array
+    $first_term = reset($terms);
+
+    // Get the term name and ID
+    $term_name = $first_term->name;
+    $term_ID = $first_term->term_id;
+
+    // Output all categories for debugging
+    $current_categories = wp_list_pluck($terms, 'name');
+    echo 'All Categories for the Post: ' . implode(', ', $current_categories) . '<br>';
+
+    // Check if the "c_termname" cookie exists
+    $cookie_term_name = $_COOKIE['c_termname'];
+    echo "Cookie Term Name: " . $cookie_term_name . '<br>';
+
+    // Check if the "c_termID" cookie exists
+    $cookie_term_ID = $_COOKIE['c_termID'];
+    echo "Cookie Term ID: " . $cookie_term_ID . '<br>';
+
+    // Check if the term name from the cookie is not in the current categories
+    if (!in_array($cookie_term_name, $current_categories) ) {
+        echo "Not in Array: " . $cookie_term_name . '<br>';
+
+        // Set the "c_termname" and "c_termID" cookies to the values of the first term
+        setcookie('c_termname', $term_name, 0, '/', 'qualitaetsoffensive-teilhabe.de');
+        setcookie('c_termID', $term_ID, 0, '/', 'qualitaetsoffensive-teilhabe.de');
+
+       echo "// Cookie : " . $_COOKIE['c_termname'] . '<br>';
+
+    }
+}
+
+
+
+
+
+
+/*  Check the Cookies and display
+ */ 
 /*
- * This file is only loaded when the singular
- * Version  1.2.1
- * if ( is_singular( array('leuchttuerme') )  {}
- * 
- * */
-
-
 if (isset($_COOKIE['c_termname'])) {
     $term_name_f_cookie = $_COOKIE['c_termname'];
     $term_ID_f_cookie = $_COOKIE['c_termID'];
     // Use $term_name in your other functions
     echo "// Cookie : " . $term_name_f_cookie;
     echo "// Cookie ID : " . $term_ID_f_cookie;
-} // END if	
+}
+*/
+/*
+*/
+
 
 
 
@@ -233,11 +279,9 @@ endif;
 
 
 
-
-
 /* _______________________________________________________________________
 
- 		leuchtturm_masonry  on the bottom we have a masonry gallery
+ 		leuchtturm_masonry on the bottom we have a masonry gallery
    _______________________________________________________________________  
 */
 
@@ -316,7 +360,6 @@ endif;
 }
 add_action('ava_before_footer', 'do_shortcode_masonry', 9);
 
-
 function footer_script_lt() {
     	?>
          <script>
@@ -354,44 +397,6 @@ add_action('wp_footer', 'footer_script_lt', 9);
 
 
 
-
-/* _______________________________________________________________________________________
-
- 			Clear Cookies on JQuery in between the masonry. 
-   ____________________________________________________________________________________
-*/
-
-function clearcookies() {
-    ?>  
-    <script>
-        jQuery(document).ready( function ($) {
-
-             // Function to reset the cookies
-            function resetCookies() {
-                // Reset the cookies here
-                document.cookie = "c_termname=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-                document.cookie = "c_termID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-            }
-
-    
-            // Detect when the popup containing the gallery is opened
-            $(document).on('click', '.lt_popup', function() {
-                // Set a timeout (e.g., 2000 milliseconds) before resetting the cookies
-                setTimeout(function() {
-                    resetCookies(); // Reset the cookies after the timeout
-                    console.log("Cookies reset.");
-
-                }, 5000); // Adjust the timeout duration as needed (measured in milliseconds)
-            });
-
-
-
-        }); // END JQuery Doc ready
-    </script>
-<?php
-
-}
-add_action('ava_before_footer', 'clearcookies', 999 );
 
 
 

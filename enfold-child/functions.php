@@ -8,11 +8,6 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  
 
-
-
-
-
-
 // INCLUDE
 // include the functions for CPT - ACF filter and relationships   
 //
@@ -48,6 +43,42 @@ add_action('template_redirect', 'custom_archive_logic');
 
 
 
+/*
+RE			    Set all materialien to publish   (kurzfristig )
+******************************************************************************** */
+/**/ 
+/*
+
+function set_materialien_to_published_once() {
+    if (isset($_GET['post_type']) && $_GET['post_type'] === 'materialien') {
+        // Beiträge des Post-Typs 'materialien' abrufen
+        $args = array(
+            'post_type' => 'materialien',
+            'post_status' => 'draft', // Nur Beiträge im Entwurfsstatus auswählen
+            'posts_per_page' => -1, // Alle Beiträge abrufen
+        );
+
+        $posts = new WP_Query($args);
+
+        if ($posts->have_posts()) :
+            while ($posts->have_posts()) : $posts->the_post();
+
+                // Beitragsstatus aktualisieren
+                $post_id = get_the_ID();
+                wp_update_post(array(
+                    'ID' => $post_id,
+                    'post_status' => 'publish',
+                ));
+
+            endwhile;
+            wp_reset_postdata();
+        endif;
+    }
+}
+add_action('admin_init', 'set_materialien_to_published_once');
+
+
+*/
 
 
 
@@ -56,7 +87,10 @@ add_action('template_redirect', 'custom_archive_logic');
 
 
 
-/* RE  Remove Blockstyles (Gutenberg) and SVG in Wordpress header  */
+
+/*
+RE			     Remove Blockstyles (Gutenberg) and SVG in Wordpress header
+******************************************************************************** */
 remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );
 remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
 function remove_block_css() {
@@ -392,30 +426,49 @@ function post_title_shortcode(){
 }
 add_shortcode( 'sc_post_title', 'post_title_shortcode' );
 
-/*  
-RE                      Add Shortcode for Thumbnail
------------------------------------------------------------------------------  WP Core */
-function post_thumbnail_shortcode($atts, $content='') {
-	if(!function_exists('post_thumbnail_shortcode'))
-		return;
 
-	if(!$atts['size'])
-		$atts['size'] = 'thumbnail';
 
-	return '<span class="post_thumbnail '.$atts['class'].'">'.get_the_post_thumbnail(null,$atts['size']).'</span>';
+
+/* 
+Add Shortcode for Thumbnail
+-----------------------------------------------------------------------------  
+WP Core 
+*/
+
+function post_thumbnail_shortcode($atts, $content = '') {
+    // Check if the function exists, this check may not be necessary
+    // You can remove this if condition
+    if (!function_exists('post_thumbnail_shortcode')) {
+        return '';
+    }
+
+    // Use the "isset" function to check if the 'size' attribute is set
+    if (!isset($atts['size'])) {
+        $atts['size'] = 'large';
+    }
+
+    // Initialize the $output variable
+    $output = '<span class="post_thumbnail ' . esc_attr($atts['class']) . '">' . get_the_post_thumbnail(null, $atts['size']) . '</span>';
+
+    return $output;
 }
-function post_thumbnail($str){
-	$args = wp_parse_args($str);
-	echo post_thumbnail_shortcode($args);
+
+function post_thumbnail($str) {
+    $args = wp_parse_args($str);
+    // Call the post_thumbnail_shortcode function and store the result in a variable
+    $thumbnail_output = post_thumbnail_shortcode($args);
+
+    // Output the result using "return" instead of "echo"
+    return $thumbnail_output;
 }
 
-add_shortcode('post_thumbnail', 'post_thumbnail_shortcode');
+add_shortcode('post_thumbnail', 'post_thumbnail');
+
+/* 
+END Shortcodes
+*/
 
 
-
-
-
-/* __________   END Shortcodes   */
 
 
 

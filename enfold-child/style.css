@@ -37,6 +37,65 @@ Fontblue:  rgba(44, 53, 61);
 }
 
 
+/* ____________-  Accordion correction */ 
+
+.as-panel .link > a:nth-child(2){
+ float: right !important;
+}
+/* from Custom CSS  */
+.example .center  { text-align: center !Important; }
+
+.example4 .text {
+	padding: 15px;
+	background-color: #f1f1f1 ;
+	color: #222 ;
+}
+.example4 .title {
+	font-size: 24px;
+	margin: 0;
+}
+.example4 .description {
+	font-size: 16px;
+	line-height: 1.2;  
+    position: absolute;
+    top: 110px;
+}
+.example4 .link {
+	position: absolute;
+	bottom: -1px;
+	font-size: 0.9em;
+}
+.example4 .link2 {
+	position: absolute;
+	bottom: -1px;
+	line-height: 1.0;
+}
+.as-layer .expert-container > p:nth-child(2){
+    line-height: 1.1em;
+}
+.as-layer  .example4 .link a {
+	color: #a1382f;
+}
+.as-layer  .overview h2{
+    margin-top: -10px !important;
+}
+div.description p.center img{
+    margin-top: 0px !important;
+}
+.as-panel .link{
+    width: 86%;
+}
+.as-layer div.description:nth-child(3) > p:nth-child(2) > span:nth-child(1){
+
+}
+.as-layer div.description:nth-child(3) > p:nth-child(2) > span:nth-child(3){
+
+}
+
+
+/* END Accordion  */
+
+
 
 
 /* Sticky Menu Addon  in Javascript footer definiert */
