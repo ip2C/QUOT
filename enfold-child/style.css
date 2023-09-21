@@ -1055,15 +1055,12 @@ header > h3 > a:hover{
     z-index: -1;
     opacity: 0;
     top: -10vh;
-    /* min-height: 400px;  */
     height: calc(100vh - 53px);
     width: 100% !important;
     background-color: rgba(0,0,0,0.6);
-    /* transition: 0 10px 10px #000 !important; */
     box-shadow:-10px 120px 70px rgba(0,0,0,0.6), 10px 120px 70px rgba(0,0,0,0.6);
-    /*! background: linear-gradient(180deg, rgba(0, 0, 0, 0.83) 50%, rgba(0, 0, 0, 0) 100%); */
     overflow-y: scroll; overflow-x: scroll;
-    /*! overflow: visible; */
+    margin-top: 30px;
 }
 #tg_masonry div, #op_masonry div, #extras div, #vertief_masonry div {
     width: 100% !important;
@@ -1508,17 +1505,25 @@ div .av_one_fourth {
 #top .av-caption-style-overlay .av-masonry-outerimage-container   {
     border:1px solid rgba(239, 187, 32, 0.4);
 }
-.av-masonry-entry:hover .av-masonry-image-container{
-    filter: none !important;
+.av-masonry-entry .av-masonry-image-container, .avia-hover-fx img{
+    filter: brightness(87%) !important;
+}
+.av-masonry-entry:hover .av-masonry-image-container, a.avia-hover-fx:hover img{
+    filter: brightness(55%) sepia(30%) !important;
 }
 #top .masonryit .av-masonry-entry-title{
     font-size: calc(14px + 0.4vw) !important;
     text-shadow: 0 0 15px #000;
 }
 /* im Inhalt */
-#main .has-post-thumbnail h3.av-masonry-entry-title{
+#main .has-post-thumbnail h3.av-masonry-entry-title, #top .av-caption-style-overlay .av-masonry-entry .av-masonry-entry-title, .grid-content .grid-entry-title a{
     font-size: calc(14px + 0.22vw) !important;
+    font-family: 'Open Sans Condensed';
+    font-size: 20px !important;
+    letter-spacing: 0.012em;
+    font-weight: normal !important; 
 }
+ 
 #main .pinnwand h3.av-masonry-entry-title{
     font-size: calc(13px + 0.22vw) !important;
 }
@@ -1740,7 +1745,7 @@ h3.w_materialien_headline b{
 .img_header .av_textblock_section{
     max-width:50%;
 }
-.avia-section.av-minimum-height .container .content{
+.avia-section.av-minimum-height-45 .container .content{
     vertical-align:bottom;
 }
 .grey_opacity.layer h1{
@@ -2493,7 +2498,6 @@ h2.portfolio-preview-title{
 }
 .grid-content .grid-entry-title a{
     background-color:transparent !important;
-    font-weight: 600 !important;
     text-shadow: 0 0 8px  rgba(5,5,5, 0.5);
     height: 100% !important;
     display: table-cell !important;

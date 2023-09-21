@@ -58,7 +58,7 @@ function  related_relationship_literatur( $outputHTML  )  {
 							$args =array(
 										'posts_per_page' => -1,
 										'post_type' => 'materialien',	// the CPT
-										'orderby' => 'excerpt',    		// menu_order    //   title   //  excerpt
+										'orderby' => 'title',    		// menu_order    //   title   //  excerpt
 										'order' => 'ASC',  		 		// DESC    / ASC                             
 										'tax_query' => array( 			// the tax_query is important to list the posttypes to its taxonomies
 											'relation' => 'AND',  
@@ -113,6 +113,9 @@ function  related_relationship_literatur( $outputHTML  )  {
 											else{ $fontbigger = "fontsmaller";}
 
 											// 
+
+
+											
 											
 											if( $form_category->slug == 'weiterfuehrende-literatur' || $form_category->slug == 'literatur'  ){   // !!!  Dies muss dann mit der neuen Datenbank korrigiert werden. 
 
@@ -160,3 +163,5 @@ function  related_relationship_literatur( $outputHTML  )  {
 } // End function related_relationship() 
 
 add_action('ava_before_footer', 'related_relationship_literatur', 100 );
+
+

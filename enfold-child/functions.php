@@ -47,7 +47,6 @@ add_action('template_redirect', 'custom_archive_logic');
 RE			    Set all materialien to publish   (kurzfristig )
 ******************************************************************************** */
 /**/ 
-/*
 
 function set_materialien_to_published_once() {
     if (isset($_GET['post_type']) && $_GET['post_type'] === 'materialien') {
@@ -78,7 +77,7 @@ function set_materialien_to_published_once() {
 add_action('admin_init', 'set_materialien_to_published_once');
 
 
-*/
+
 
 
 
