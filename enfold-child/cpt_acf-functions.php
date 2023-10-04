@@ -54,11 +54,12 @@ function  related_relationship_literatur( $outputHTML  )  {
 					$cat_taxonomies = get_terms( 'medienform');  
 					// foreach category as $form_category  -  medienform
 					foreach ( $cat_taxonomies as $form_category ):
-							// check the arguments of the post_type, orderby
-							$args =array(
+							// check the arguments of the post_type, orderby 
+							$args = array(
 										'posts_per_page' => -1,
 										'post_type' => 'materialien',	// the CPT
-										'orderby' => 'excerpt',    		// menu_order    //   title   //  excerpt
+										'orderby' => 'meta_value',     // Sort by custom field value   // 'orderby' => 'title',    	// menu_order   //  title   //  date
+										'meta_key' => 'author',  
 										'order' => 'ASC',  		 		// DESC    / ASC                             
 										'tax_query' => array( 			// the tax_query is important to list the posttypes to its taxonomies
 											'relation' => 'AND',  

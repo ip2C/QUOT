@@ -37,6 +37,27 @@ Fontblue:  rgba(44, 53, 61);
 }
 
 
+
+
+/*  2023 Anpassungen */
+.entry-content-wrapper .avia_textblock h2 strong{
+    font-size: 28px !important;
+    color: var(--red) !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ____________-  Accordion correction */ 
 
 .as-panel .link > a:nth-child(2){
