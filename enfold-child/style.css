@@ -17,24 +17,10 @@ Fontblue:  rgba(44, 53, 61);
 :root {
     --red: #a1382f;
     --yellow: #efbb20;
-    --greyblue: rgba(44, 53, 61, 1);
+    --greyblue: #2c353d;
     --font: #093a56;
 }
 
-/* - 2023  Compliance AddOn    */
-#cmplz-document{
-    max-width: 100% !important;
-}
-#cmplz-cookies-overview .cmplz-dropdown.cmplz-dropdown-cookiepolicy summary div,
-#cmplz-document .cmplz-dropdown.cmplz-dropdown-cookiepolicy summary div,
-.editor-styles-wrapper .cmplz-unlinked-mode .cmplz-dropdown.cmplz-dropdown-cookiepolicy summary div {
-    grid-template: "heading paragraph label checkbox chevron";
-    grid-template-columns: 2fr auto 101px 24px 26px;
-}
-#cmplz-manage-consent .cmplz-manage-consent {
-    height: 38px !important;
-    padding-top: 7px !important;
-}
 
 
 
@@ -48,6 +34,31 @@ Fontblue:  rgba(44, 53, 61);
 
 
 
+/* ______________  2023 Homepage Portraitmode  ____ */
+.nkbev_home .hr-custom .hr-inner.inner-border-av-border-fat {
+    border-top-width: 3px !important;
+}
+.portraitmode a .av-masonry-image-container{
+    filter: contrast(40%) grayscale(100%) brightness(130%) !important
+}
+.portraitmode a:hover .av-masonry-image-container{
+    filter: contrast(100%) grayscale(0%) brightness(83%) !important
+}
+@media (min-width:1400px){
+    .portraitmode .av-masonry-entry .av-inner-masonry {
+        height: 55vmin;
+        min-height: 340px;
+        max-height: 490px;
+    }
+}/**/
+#main .portraitmode .av-masonry-entry h3.av-masonry-entry-title{
+    /* font-size: 24px !important; */
+}
+#top.av-accessibility-aaa .av-rotator-container-inner{
+    font-size: 26px !important;
+    line-height: 1.5em;
+}
+/* END  neue Startseite 2032*/
 
 
 
@@ -57,6 +68,20 @@ Fontblue:  rgba(44, 53, 61);
 
 
 
+/* - 2023  Compliance AddOn  in Cookierichtlinien    */
+#cmplz-document{
+    max-width: 100% !important;
+}
+#cmplz-cookies-overview .cmplz-dropdown.cmplz-dropdown-cookiepolicy summary div,
+#cmplz-document .cmplz-dropdown.cmplz-dropdown-cookiepolicy summary div,
+.editor-styles-wrapper .cmplz-unlinked-mode .cmplz-dropdown.cmplz-dropdown-cookiepolicy summary div {
+    grid-template: "heading paragraph label checkbox chevron";
+    grid-template-columns: 2fr auto 101px 24px 26px;
+}
+#cmplz-manage-consent .cmplz-manage-consent {
+    height: 38px !important;
+    padding-top: 7px !important;
+}
 
 /* ____________-  Accordion correction */ 
 
@@ -350,13 +375,14 @@ h2.av-special-heading-tag, .sub-menu span.avia-menu-text {
 .col-excerpt, .main_color tr{
     color: var(--greyblue) !important;
 }
-
 h3 em{
     color: var(--red);
     font-weight: normal !important;
     font-size: 26px !important;
 }
-
+body .avia-tooltip {
+    font-size: clamp(12px, 1.39vmin, 18px) !important;
+}
 .megrim h2,  .leuchttuerme-template-default h2{
     font-size: clamp(29px, 2.21vw , 43px) !important;
     white-space: nowrap;
@@ -1538,11 +1564,11 @@ div .av_one_fourth {
 }
 /* im Inhalt */
 #main .has-post-thumbnail h3.av-masonry-entry-title, #top .av-caption-style-overlay .av-masonry-entry .av-masonry-entry-title, .grid-content .grid-entry-title a{
-    font-size: calc(14px + 0.22vw) !important;
+    font-size: clamp(13px, 1.6vw, 20px) !important;
     font-family: 'Open Sans Condensed';
-    font-size: 20px !important;
     letter-spacing: 0.012em;
-    font-weight: normal !important; 
+    font-weight: normal !important;
+    text-transform: uppercase; 
 }
  
 #main .pinnwand h3.av-masonry-entry-title{
@@ -2332,7 +2358,7 @@ div.taglist a.activeFilter {
 /* Gelbes Submenü */
 
 /* Sprechblase */
-body,  body .avia-tooltip {
+body {
     font-size: 17.6px;
 }
 body.single-post {
