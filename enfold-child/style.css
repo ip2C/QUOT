@@ -753,7 +753,12 @@ ts-nav__thumbnail img {
     z-index: 999 !important;
 }
 
-
+#top .scroll-down-link {
+    height: 50px;
+    font-size: 50px;
+    text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.4);
+    animation: none ;
+  }
 /* _____________    avia Cookiemeldung  / Nutzungsbedingungen  */
 #av-consent-extra-info .mfp-close{
     display: none !important;
@@ -772,12 +777,12 @@ ts-nav__thumbnail img {
   visibility: visible;
   transition: all 0.3s ease-in-out;
   overflow: hidden;
-
 }
 /**/
 #av-consent-extra-info{
     height: 74vh !important;
     max-height: 1000px;
+    max-width: 1310px !important;
 }
 .av-inline-modal{
     padding: 2vmin;
@@ -1241,22 +1246,19 @@ logo img{
     letter-spacing: .05em;
     background-color: transparent;
 }
-
+ 
 #top #header .avia_mega_div > .sub-menu > li{
-    /* padding: 1.9vmin !important;
-    background: none !important;
-    */
-    /*! margin-left: 10px; */
     background-color:  transparent !important;
 }
-/*
-#top #header .avia_mega_div > .sub-menu > li > li{
-	 padding: 1.9vmin !important;
-}
-*/
+
 #top #header .avia_mega_div > .sub-menu{
     padding: 0;
-    /*! border-left: 1px solid #efbb20; */
+    opacity: 0;
+    display: none !important; 
+}
+#top.logged-in  #header .avia_mega_div > .sub-menu{
+    display: block !important; 
+    opacity: 1;
 }
 #top #header .avia_mega_div > .sub-menu > li > ul > li a{
     padding: 0 !important;
@@ -1289,11 +1291,7 @@ top #header .avia_mega_div .sub-menu .avia_mega_text_block a {
     border-top-width: 0 !important;
     border-bottom:1px solid #efbb20;
 }
-#top #header_main_alternate .container{
-    /*! max-width: 100% !important; */
-    /*! padding: 0 !important; */
-    /*! margin: 0 !important; */
-}
+
 
 .avia-menu-fx {
     height: 3px;

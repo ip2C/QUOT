@@ -1,87 +1,55 @@
 (function($) {	
 //
     $(document).ready(function() {
-        // console.log("doc ready js-specials.js in footer");          
-                //
-                $('#form_in_cookie').fadeOut();
-                // this function shows in the cookies the content below 
-                if( $('#cook_nutz_id').prop('checked')) {
-						$('#n_formen').fadeIn();
-                }
-                if( $('#commercial').prop('checked')     ) {   
-                    $(' .avia-cookie-consent-modal-buttons-wrap').fadeOut();
-                    $('#form_in_cookie').fadeIn();
-                }
-                //
-                //
-                $( ".nutzungsbedingungen_acc" ).click (function(){
-                    //
-                    setTimeout(function() {
-                        //    
-                        if( $('#cook_nutz_id').prop('checked')) {
-                            $('#n_formen').fadeIn();
-                           // console.log("propperty checked");  
-                        } 
-                        else{  
-                            // console.log("propperty else than checked");  
-                            $('#n_formen').fadeOut();
-                        }
-                    }, 200);
-                }); // End Nutzbedingungen  Click
-                // 
-                // Buttons non commercial and commercial function
-                // non Commercial
-				$( ".non_commercial" ).click (function(){
-                    $('#commercial').prop('checked', false);
-                    setTimeout(function() {
-                        if( $('#commercial.ckies').prop('checked')) {
-                            $('.avia-cookie-consent-modal-buttons-wrap').hide();
-							// $('#non_commercial').fadeOut(); 
-                        // something when checked
-                        }
-                        if( $('#non_commercial').prop('checked')) {
-                            $('.avia-cookie-consent-modal-buttons-wrap').fadeIn(); 
-                            $('.commercial.ckies').fadeOut(); 
-                            $('#commercial').prop('checked', false);
-                        }else {
-                            $(' .avia-cookie-consent-modal-buttons-wrap').fadeOut(); 
-							$('.commercial.ckies').fadeIn(); 
-                            
-                        }
-                    }, 200); // milliseconds
-				});// End Function a click 
-				//  commercial
-				$( ".commercial" ).click (function(){
-                    $('#non_commercial').prop('checked', false);
-                    setTimeout(function() { 
-                        if( $('#commercial').prop('checked')     ) {  
-                            $('#non_commercial').prop('checked', false);
-                            $(' .avia-cookie-consent-modal-buttons-wrap').fadeOut();
+        //
+        //
+        // Kommerzielles Nutzungsformular beim Start der Seite.
+        //
+      // Initialize the form's visibility based on the 'commercial' checkbox's state
+            if ($('#commercial').prop('checked')) {
+                $('.avia-cookie-consent-modal-buttons-wrap').fadeOut();
+                $('#form_in_cookie').fadeIn();
+            }
 
-                             $('#form_in_cookie').fadeIn();
-                        } 
-                    }, 200); // milliseconds
-				});// End Function a click
-                // 
-                //
-                //  The Timeframed 
-                // 
-                //
-                //
-                //
-                // av-sending-button
-                $( "#av-consent-extra-info .form_element .button" ).mouseup (function(){
+            // Event listener for .non_commercial click
+            $(".non_commercial").click(function() {
+                $('#commercial').prop('checked', false);
+                
+                setTimeout(function() {
+                    if ($('#commercial.ckies').prop('checked')) {
+                        $('.avia-cookie-consent-modal-buttons-wrap').hide();
+                    }
+                    if ($('#non_commercial').prop('checked')) {
+                        $('.avia-cookie-consent-modal-buttons-wrap').fadeIn();
+                        $('.commercial.ckies').fadeOut();
+                        $('#commercial').prop('checked', false);
+                    } else {
+                        $('.avia-cookie-consent-modal-buttons-wrap').fadeOut();
+                        $('.commercial.ckies').fadeIn();
+                    }
+                }, 200);
+            });
+
+            // Event listener for .commercial click
+            $(".commercial").click(function() {
+                $('#non_commercial').prop('checked', false);
+                
+                setTimeout(function() {
+                    if ($('#commercial').prop('checked')) {
+                        $('#non_commercial').prop('checked', false);
+                        $('.avia-cookie-consent-modal-buttons-wrap').fadeOut();
+                        switchToTab();
+                    }
+                }, 200);
+            }); 
+           // Function to simulate a click on the link to #tab-id-3
+                function switchToTab() {
                     setTimeout(function() {
-						
-                       if( $('#av-consent-extra-info  .ajaxresponse').is(":visible")    ) {
-                            // dann zeige schließen Button 
-                            $('.avia-cookie-consent-modal-buttons-wrap').fadeIn(400); 
-                        } 
-                       
-                    }, 1500);  // milliseconds
-                });
-		//
-		//
+                        $("#link-to-tab3").trigger('click');
+                    }, 500);
+                }
+           //
+        //  
 		//
 		// Video verzögert hinzu laden.
 		// Einzelfragen Videos 
