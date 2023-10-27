@@ -41,11 +41,11 @@
                         }
                         if( $('#non_commercial').prop('checked')) {
                             $('.avia-cookie-consent-modal-buttons-wrap').fadeIn(); 
-                           //  $('.commercial.ckies').fadeOut(); 
+                            $('.commercial.ckies').fadeOut(); 
                             $('#commercial').prop('checked', false);
                         }else {
                             $(' .avia-cookie-consent-modal-buttons-wrap').fadeOut(); 
-							// $('.commercial.ckies').fadeIn(); 
+							$('.commercial.ckies').fadeIn(); 
                             
                         }
                     }, 200); // milliseconds
