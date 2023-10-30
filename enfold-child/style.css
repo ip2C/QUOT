@@ -35,6 +35,20 @@ Fontblue:  rgba(44, 53, 61);
 
 
 /* ______________  2023 Homepage Portraitmode  ____ */
+.logo_as_html{
+    display: flex;
+    justify-content: center;
+}
+.NekoB-logo.av-special-heading-tag{
+    font-size: clamp(20px, 3.6vw, 50px) !important;
+    color: #093a56 !important;  
+    font-weight: 100;
+}
+.NekoB-logo.av-special-heading-tag strong{
+    font-weight: 400 !important;
+    color: #093a56 !important;
+}
+
 .nkbev_home .hr-custom .hr-inner.inner-border-av-border-fat {
     border-top-width: 3px !important;
 }
@@ -48,13 +62,40 @@ Fontblue:  rgba(44, 53, 61);
     .portraitmode .av-masonry-entry .av-inner-masonry {
         height: 55vmin;
         min-height: 340px;
-        max-height: 490px;
+        max-height: 440px;
     }
 }/**/
 #top.av-accessibility-aaa .av-rotator-container-inner{
     font-size: 26px !important;
     line-height: 1.5em;
 }
+
+#spendbutton {
+    position: absolute;
+    z-index: 1;
+    right: 6%;
+    width: calc(100px + 2vmin);
+    top: 233px;
+}  
+#spendbutton .image-overlay{
+    display: none !important;
+}
+.logoaddon{
+    display: none !important;
+}
+@media screen and (max-width:768px) {
+    .logoaddon{
+        margin-right: 2%;
+        display: block !important;
+        float: left !important;
+        width: 18%;
+    }
+    .nekobimage{
+        width: 75%;
+        float: left;
+    }   
+}
+
 /* END  neue Startseite 2032*/
 
 
