@@ -34,6 +34,8 @@ Fontblue:  rgba(44, 53, 61);
 
 
 
+
+
 /* ______________  2023 Homepage Portraitmode  ____ */
 .logo_as_html{
     display: flex;
@@ -48,7 +50,6 @@ Fontblue:  rgba(44, 53, 61);
     font-weight: 400 !important;
     color: #093a56 !important;
 }
-
 .nkbev_home .hr-custom .hr-inner.inner-border-av-border-fat {
     border-top-width: 3px !important;
 }
@@ -73,9 +74,9 @@ Fontblue:  rgba(44, 53, 61);
 #spendbutton {
     position: absolute;
     z-index: 1;
-    right: 6%;
-    width: calc(100px + 2vmin);
-    top: 233px;
+    right: 5%;
+    width: calc(100px + 3vmin);
+    top: calc(100px + 3vmin);
 }  
 #spendbutton .image-overlay{
     display: none !important;
@@ -84,6 +85,24 @@ Fontblue:  rgba(44, 53, 61);
     display: none !important;
 }
 @media screen and (max-width:768px) {
+    .nekobimage{
+        margin-top: 15px !important;
+    }
+    #spendbutton {
+        position: absolute;
+        z-index: 2;
+        right: -4%;
+        width: calc(40px + 8vmin);
+        top: calc(120px + 7vmin);
+    }  
+    .wp-image-84257{
+        min-width: 104vw !important;
+        margin-left: -9vw !important;
+    }
+    .nkbev_home .hr-custom .hr-inner.inner-border-av-border-fat {
+        border-top-width: 2px !important;
+        border:none !important;
+    }
     .logoaddon{
         margin-right: 2%;
         display: block !important;
@@ -130,6 +149,9 @@ Fontblue:  rgba(44, 53, 61);
 }
 
 /* ____________-  Accordion correction */ 
+
+
+
 
 .as-panel .link > a:nth-child(2){
  float: right !important;
@@ -799,6 +821,7 @@ ts-nav__thumbnail img {
     font-size: 50px;
     text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.4);
     animation: none ;
+    bottom: -50px; 
   }
 /* _____________    avia Cookiemeldung  / Nutzungsbedingungen  */
 #av-consent-extra-info .mfp-close{
@@ -1244,6 +1267,11 @@ header > h3 > a:hover{
     }
 }/**/
 /* logo image */
+@media only screen and (max-width: 767px) {
+  .page-id-71654#top .logo {
+      display: none !important;
+  }
+}
 div .logo{
     margin-left:-1%;
 }
@@ -1272,14 +1300,24 @@ logo img{
 #header .hr{
     display:none !important;
 }
-@media screen and (min-width: 990px) {
+@media screen and (min-width: 768px) {
+    .header_color .main_menu.main_menu{
+        min-width: 767px !important;
+    }
     .header_color .main_menu ul ul{
-        background-color: rgb(240,240,240) !important;
+        background-color: var(--greyblue) !important;
         box-shadow: none !important;
         border-top: none !important;
+        color: #fff !important;
+        opacity: 1;
+        opacity: 1;
+    }
+    .header_color .main_menu ul ul a span {
+        font-family: 'Open Sans Condensed';
+        text-transform: uppercase !important;
     }
 }/**/
-/*add 2020 01*/
+/* add 2020 01*/
 #top .av-main-nav ul a{
     font-family: Lato-N !important;
     font-size: 16px;
@@ -1287,27 +1325,54 @@ logo img{
     letter-spacing: .05em;
     background-color: transparent;
 }
- 
+
+ul li.nolink span{
+    text-align: right !important;
+    float: right !important;
+    opacity: 1;
+}
+.nolink > span > a{
+    font-style: normal !important;
+    font-weight: 300;
+    cursor: none !important;
+    pointer-events: none  !important;
+    font-size: 15px !important;
+    text-transform: none !important;
+    color: #fff !important;
+    opacity: 0.3 !important;
+}
 #top #header .avia_mega_div > .sub-menu > li{
     background-color:  transparent !important;
+    padding: 1vmin;
+    opacity: 1;
 }
-
 #top #header .avia_mega_div > .sub-menu{
     padding: 0;
-    opacity: 0;
     display: none !important; 
+    opacity: 1;
+    visibility: visible;
+    display: block !important;
 }
 #top.logged-in  #header .avia_mega_div > .sub-menu{
     display: block !important; 
     opacity: 1;
 }
-#top #header .avia_mega_div > .sub-menu > li > ul > li a{
-    padding: 0 !important;
-    line-height: 0.9em;
-    color:inherit;
+#top #header .avia_mega_div > .sub-menu > li > ul > li a {
+    padding-right: 0 !important; 
+    line-height: 0.9em !important;
+    margin: 2px 0 10px 0px !important; 
+    opacity: 1;
 }
+#top #header .avia_mega_div > .sub-menu > li > ul > li a span{
+    line-height: 0.9em !important;
+    padding-bottom: 14px !important;
+    opacity: 1;
+    color: #fff !important;
+}
+#top .header_color .main_menu .menu ul li > a:hover,
+#top .header_color .main_menu .menu ul li > a:focus,
 #top #header .avia_mega_div > .sub-menu > li > ul > li.current-menu-item a{
-    color:var(--red);
+    color:var(--yellow)  !important;
 }
 .avia-content-slider .slide-image{
     border-radius:0px !important;
@@ -1356,14 +1421,15 @@ top #header .avia_mega_div .sub-menu .avia_mega_text_block a {
     font-size: calc(13px + 0.3vw);
     /*! -moz-osx-font-smoothing: grayscale !important; */
     text-transform: uppercase;
-    letter-spacing: .7px;
+    letter-spacing: 0.8px;
 }
 @media screen and (min-width: 768px) {
+    #header .avia_mega_div{
+        /*! min-width: 808px !important; */
+    }
     #top #header_main_alternate .av-menu-button{
-        /*! position: absolute !important; */
         top: -2px;
         right: -5% !important;
-        /*! right: -1% !important; */
     }
     #top #header_main_alternate .av-menu-button > a .avia-menu-text{
         padding: 7px 11px;
@@ -1423,24 +1489,9 @@ top #header .avia_mega_div .sub-menu .avia_mega_text_block a {
 
 
 
-@media screen and (max-height:1000px) {
-    .avia_mega_div{
-        /*  overflow-y: scroll !important;
-         padding-bottom: 20px !important; */
-    }
-    #menu-item-10523{
-        /*  overflow-y: scroll !important;
-          padding-bottom: 20px !important;
-             */
-    }
 
-    .ops  .av-elegant-toggle .toggler{
-        /*
-          font-size:calc(10px + 0.2vh) !important;
-        font-size:10px !important;
-          */
-    }
-}/**/
+
+
 
 /* End Headermenu */
 /*   Mobil Menu    av-burger-menu
@@ -1535,7 +1586,7 @@ div .av_one_fourth {
     padding: 1.8% 3% 1.8% 5% !important;
     border: none !important;
     text-transform: uppercase;
-    letter-spacing: 0.1vmin;
+    letter-spacing: 0.8px;
     font-family: 'Open Sans Condensed' !important;
 }
 #top #wrap_all .alternate_color .av-menu-button-colored > a .avia-menu-text{
@@ -1815,6 +1866,12 @@ div.img_header:after{
     border-top:1px solid rgba(145, 145, 145, 0.23);
 }
 
+#top .hr.hr-invisible{
+  height: 4vmin !important;
+}
+#top .hr.hr-invisible.avia-builder-el-1{
+  height: 0px !important;;
+}
 .main_color.fullsize{
     border: none !important;
 }
