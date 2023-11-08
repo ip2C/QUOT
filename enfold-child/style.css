@@ -1,6 +1,6 @@
 /*
 Theme Name: Enfold Child
-Version: 6.1.0
+Version: 6.2.0
 Author: RE / GS
 Author URI: http://www.ip2c.de
 Template: enfold
@@ -103,16 +103,24 @@ Fontblue:  rgba(44, 53, 61);
         border-top-width: 2px !important;
         border:none !important;
     }
+    .Nekob_logo a{
+        width: 90% !important;
+        margin-top: -5% !important;;
+    }
     .logoaddon{
-        margin-right: 2%;
         display: block !important;
-        float: left !important;
+        float: none !important;
         width: 18%;
     }
     .nekobimage{
         width: 75%;
         float: left;
     }   
+}
+@media screen and (max-width:479px) {
+    .portraitmode .av-masonry-entry:last-child{
+        display: none !important;
+    }
 }
 
 /* END  neue Startseite 2032*/
@@ -437,6 +445,12 @@ h3 {
     line-height: 1.4em;
     margin-top: -0.2em;
 }
+
+.search#top #wrap_all .main_color h2 {
+    font-family: 'Lato-N', Arial !important;
+    text-transform: none !important;
+    font-size: calc(13px + .6vmin); 
+}
 h2.av-special-heading-tag, .sub-menu span.avia-menu-text {
     text-transform: none !important;
 }
@@ -485,9 +499,7 @@ h4 em, h5 em{
     url('https://qualitaetsoffensive-teilhabe.de/wp-content/themes/enfold-child/fonts/megrim-v16-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
     url('https://qualitaetsoffensive-teilhabe.de/wp-content/themes/enfold-child/fonts/megrim-v16-latin-regular.svg#Megrim') format('svg'); /* Legacy iOS */
 }
-#vt_kulturhaus{
 
-}
 #vt_kulturhaus .av-hotspot-container .av-image-hotspot-pulse {
     display: block;
     background: #fff;
@@ -954,13 +966,6 @@ div.commercial{
       */
       color: var(--yellow) !important;
   }
-  .main_color #n_formen h4{
-  }
-  div.commercial strong{
-  }
-  div.commercial a, div.commercial .checkbox > span{
-
-  }
   #n_formen a.ckies{
       margin-top: -10px !important;
   }
@@ -1083,10 +1088,6 @@ ul.az-links > li{
 ul.az-links > li  a span{
     font-size: calc(6px * 0.1vw) !important;
 }
-.a-z-listing-widget.widget .az-letters > ul.az-links > li {
-
-}
-
 
 
 
@@ -1245,10 +1246,7 @@ header > h3 > a:hover{
 @media only screen and (min-width: 1610px) {
     .masonryit .av-masonry-col-6 .av-masonry-entry, .spec_sort_masonry .av-masonry-col-6 .av-masonry-entry {
         width: 14.2857%;
-    }
-    /*.menu-item-top-level-1 ul li.units{
-        width: calc(14.2857vw - 3.8vmin) !important;
-    }*/
+    } 
 }/**/
 @media only screen and (min-width: 1920px) {
     .masonryit .av-masonry-col-6 .av-masonry-entry, .spec_sort_masonry .av-masonry-col-6 .av-masonry-entry {
@@ -1277,7 +1275,6 @@ div .logo{
 }
 logo img{
     height: 30vmin;
-    /*! margin-left: 0%; */
 }
 @media only screen and (max-width: 580px) {
     .responsive .logo img {
@@ -1411,22 +1408,13 @@ top #header .avia_mega_div .sub-menu .avia_mega_text_block a {
     .av-main-nav > li > a{
         padding: 0 2px;
     }
-    header .menu-item-top-level-5{
-        /*! position: absolute !important; */
-        /*! right: 10%; */
-    }
 }/**/
 #top #header .av-main-nav > li > a .avia-menu-text{
-    /*! font-weight: lighter !important; */
     font-size: calc(13px + 0.3vw);
-    /*! -moz-osx-font-smoothing: grayscale !important; */
     text-transform: uppercase;
     letter-spacing: 0.8px;
 }
 @media screen and (min-width: 768px) {
-    #header .avia_mega_div{
-        /*! min-width: 808px !important; */
-    }
     #top #header_main_alternate .av-menu-button{
         top: -2px;
         right: -5% !important;
@@ -1434,11 +1422,9 @@ top #header .avia_mega_div .sub-menu .avia_mega_text_block a {
     #top #header_main_alternate .av-menu-button > a .avia-menu-text{
         padding: 7px 11px;
         font-size: calc(9px + 0.2vw) !important;
-        /*! line-height: 22px; */
         color: var(--yellow) !important;
         border-radius: .4vmin !important;
         opacity: 0.7;
-        /*! margin-bottom: 10px !important; */
         top: -5px !important;
     }
 }/**/
@@ -1543,8 +1529,40 @@ div .av_one_fourth {
         margin-left: -277px;
     }
 }/**/
-
-
+/* 2023  _ Suchen und finden */
+.bottomliner{
+    float: left !important;
+    width:100% !important;
+    min-width: 320px !important;
+    margin-top: -20px !important;
+}
+.av_searchform_element_results a.av_ajax_search_entry{
+    max-width: 500px !important;
+}
+.img_header .bottomliner .av_textblock_section:last-child{
+     width: 100% !important;
+    max-width: 100% !important;
+    position: relative !important;
+}
+.img_header .bottomliner .av_textblock_section form {
+    border-radius: 3px;
+}
+.img_header .bottomliner .av_textblock_section form input{
+    height: calc(29px + 1vw) !important;
+}
+#top .avia_search_element #s {
+  padding: 0 .5em;
+  height: 40px;
+  line-height: 40px;
+}
+@media (max-width: 767px) {
+    form input{
+       font-size: 12px !important;
+    }
+    .av_searchsubmit_wrapper{
+        display: none !important;
+    }
+}/**/
 
 /* End Search */
 
@@ -1734,12 +1752,6 @@ div .av_one_fourth {
         font-weight: bold;
         text-transform: uppercase;
     }
-    #spec_sort_masonry .av-masonry-sort.main_color{
-        /*! margin-bottom: 0; */
-        /*! position: absolute; */
-        /*! z-index: 222; */
-        /*! top: -280px; */
-    }
     .spec_sort_masonry .av-masonry-sort.main_color{
         background-color: #2c353d !important;
         /*! border-bottom:1px solid #efbb20; */
@@ -1795,9 +1807,6 @@ div .av_one_fourth {
         transition: all ease-in-out 0.1s;
     }
 }/**/
-.av-masonry-sort.main_color a:hover span{
-    /*! color: var(--greyblue) !important; */
-}
 
 .text-sep {
     color: transparent !important;
@@ -1943,12 +1952,8 @@ h3.w_materialien_headline b{
 /* RE
 *********	layerslider addaption - copy des Stils des Layerslider  */
 
-.avia-section.av-minimum-height .container {
-    /* max-width: 100%; */
-}
-.img_header .av_textblock_section{
-    max-width:50%;
-}
+
+
 .avia-section.av-minimum-height-45 .container .content{
     vertical-align:bottom;
 }
@@ -1973,8 +1978,15 @@ h3.w_materialien_headline b{
 /* copyr */
 .img_header .av_textblock_section:last-child{
     float:right;
-    margin-top:10px;
+    position: absolute;
+    right: 0px;
+    bottom: 6px;
 }
+@media only screen and (max-width: 767px) {
+   .img_header .av_textblock_section:last-child{
+       right: 5px;
+    }
+}/**/
 .copyr h3{
     font-family: "Courier New", Courier, monospace;
     color:rgba(255,255,255, 0.99) !important;
@@ -2007,9 +2019,6 @@ h3.w_materialien_headline b{
     width: 14vw;
     min-width: 60px;
     padding-right: 20px;
-}
-.size-square{
-    /*! padding-right: 20%; */
 }
 @media screen and (max-width:430px) {
     .blog-meta-new{
@@ -2158,11 +2167,6 @@ section.gridkachel{
     }
 
 }/**/
-@media (min-width:1400px){
-    section.gridkachel{
-        /*! width: 20% !important; */
-    }
-}/**/
 /* hover effect */
 section.gridkachel{
     transition: all 0.12s ease-in-out;
@@ -2183,17 +2187,6 @@ section.gridkachel:hover{
 #uebungen, #materialen_wrapper {
     background-color: #efefef;
 }
-#uebungen .container, #literatur  .container, #literatur_tg  .container{
-    /*	max-width: 1400px; */
-}
-#weit_materialien .av_one_fifth, .single-theor_grundlagen #literatur .av_one_fifth , #uebungen .av_one_fifth{
-    /*! display: none !important; */
-}
-@media (min-width:1400px){
-    #weit_materialien .av_four_fifth, .single-theor_grundlagen #materialien .av_four_fifth, .single-theor_grundlagen #literatur .av_four_fifth, .single-theor_grundlagen  #uebungen .av_four_fifth {
-        /*width: 90%;*/
-    }
-}/**/
 
 /* END Kacheln in Akkordeon*/
 
@@ -2233,10 +2226,12 @@ section.gridkachel:hover{
 /**/
 
 .main_color .primary-background, .main_color .primary-background a, div .main_color .button, .main_color #submit, .main_color input[type='submit'], .main_color .small-preview:hover, .main_color .avia-menu-fx, .main_color .avia-menu-fx .avia-arrow, .main_color.iconbox_top .iconbox_icon, .main_color .iconbox_top a.iconbox_icon:hover, .main_color .avia-data-table th.avia-highlight-col, .main_color .avia-color-theme-color, .main_color .avia-color-theme-color:hover, .main_color .image-overlay .image-overlay-inside:before, .main_color .comment-count, .main_color .av_dropcap2, .main_color .av-colored-style .av-countdown-cell-inner, .responsive #top .main_color .av-open-submenu.av-subnav-menu > li > a:hover, #top .main_color .av-open-submenu.av-subnav-menu li > ul a:hover{
-    background-color: var(--yellow);
+    background-color: rgba(0,0,0, 0.6) !important;
     border: none;
 }
-
+.main_color .av_searchsubmit_wrapper {
+  background-color: transparent !important;
+}
 /* END Form */
 
 
@@ -2376,6 +2371,9 @@ section.gridkachel:hover{
     border-left: none;
     border-right: none;
 }
+.av-elegant-toggle.togglecontainer .av_toggle_section .toggler.activeTitle {
+  border-bottom: 0px !important;
+}
 #main .toggle_content {
     border-left: none;
     border-right: none;
@@ -2456,16 +2454,7 @@ section.gridkachel:hover{
     font-style: italic;
     background-color: transparent !important;
 }
-/* Wort "Alle" im Tab Filter unsichtbar machnen auch das erste / Zeichen
-a[data-tag="{Alle}"] {
-  display: none;
-}
-div.taglist a.activeFilter {
-  display: none;
-}
-.taglist a:first-child, .taglist a:first-child + span.tag-seperator {
-	display: none; }
-*/
+ 
 
 /* Bild Hover-Effekt mit größerem ZOOM - Ja, Bildgröße leicht vergrößern */
 .avia-image-container.av-hover-grow img:hover, .avia-image-container.av-hover-grow .avia-image-overlay-wrap:hover {
@@ -2934,15 +2923,8 @@ h2.portfolio-preview-title{
 #spielmittel a.avia-button  span::before, .single-portfolio .av_one_half .avia-button span::before{
     opacity:0 !important;
 }
-#top #wrap_all .main_color h2 {
-    font-size: calc(11px + 2.5vmin);
-    letter-spacing:normal;
-}
 .main_color #js_sort_items a.active_sort, .main_color #js_sort_items a:hover{
     color:var(--yellow);
-}
-.width_plus.main_color.fullsize{
-    /* border-top:2px solid var(--yellow) !important; */
 }
 .width_plus .container .content{
     width:101% !important;

@@ -15,6 +15,37 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 
 
+
+
+/* 
+RE  			 Umbenennung von Beiträgen
+**************************************************************************** WP Core */
+// Change dashboard Posts to News
+/**/
+/**/ 
+function cp_change_post_object() {
+    $get_post_type = get_post_type_object('post');
+    $labels = $get_post_type->labels;
+        $labels->name = 'Pinnwand';
+        $labels->singular_name = 'Pinnwand'; 
+        $labels->add_new = 'Neuer Eintrag';
+        $labels->add_new_item = 'Pinwand';
+        $labels->edit_item = 'Bearbeite Pinnwand';
+        $labels->new_item = 'Neuer Eintrag';
+        $labels->view_item = 'Pinnwand';
+        $labels->search_items = 'Suche in Pinnwand';
+        $labels->not_found = 'Kein Eintrag gefunden';
+        $labels->not_found_in_trash = 'Kein Eintrag found in Trash';
+        $labels->all_items = 'Alle Eintaege';
+        $labels->menu_name = 'Pinnwand';
+        $labels->name_admin_bar = 'Pinnwand';
+	
+}
+add_action( 'init', 'cp_change_post_object' );
+
+
+
+
 /*RE ******************************		Post Type:  	Weit. Materialien 	+	Tax     Medienformen
 *************************************************************************************************************** */
  function cptui_register_my_cpts_materialien() {
