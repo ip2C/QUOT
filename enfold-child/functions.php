@@ -21,6 +21,7 @@ require_once "reg_cpt-functions.php";
 //
 require_once "cpt_acf-functions.php";
 //
+//
 function load_leuchttuerme_functions() {
     if ( is_singular(array('leuchttuerme') ) ) {
         require_once "leuchttuerme-functions.php";
@@ -35,11 +36,7 @@ function custom_archive_logic() {
 }
 add_action('template_redirect', 'custom_archive_logic');
 
-
-
-
 /* END include */
-
 
 
 
@@ -47,7 +44,7 @@ add_action('template_redirect', 'custom_archive_logic');
 RE			    Set all materialien to publish   (kurzfristig )
 ******************************************************************************** */
 /**/ 
-
+/*
 function set_materialien_to_published_once() {
     if (isset($_GET['post_type']) && $_GET['post_type'] === 'materialien') {
         // Beiträge des Post-Typs 'materialien' abrufen
@@ -75,7 +72,7 @@ function set_materialien_to_published_once() {
     }
 }
 add_action('admin_init', 'set_materialien_to_published_once');
-
+*/
 
 
 
@@ -505,11 +502,6 @@ function avf_modify_ajax_search_query($search_parameters){
 add_filter('avf_ajax_search_query', 'avf_modify_ajax_search_query', 10, 1);
 
 */
-
-
-
-
- 
 
 
 

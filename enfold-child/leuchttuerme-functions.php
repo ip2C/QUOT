@@ -4,7 +4,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 
 
-
 // Get the current post ID
 $post_ID = get_the_ID();
 
@@ -21,15 +20,15 @@ if (is_singular('leuchttuerme') && is_array($terms)) {
 
     // Output all categories for debugging
     $current_categories = wp_list_pluck($terms, 'name');
-    echo 'All Categories for the Post: ' . implode(', ', $current_categories) . '<br>';
+   // echo 'All Categories for the Post: ' . implode(', ', $current_categories) . '<br>';
 
     // Check if the "c_termname" cookie exists
     $cookie_term_name = $_COOKIE['c_termname'];
-    echo "Cookie Term Name: " . $cookie_term_name . '<br>';
+   // echo "Cookie Term Name: " . $cookie_term_name . '<br>';
 
     // Check if the "c_termID" cookie exists
     $cookie_term_ID = $_COOKIE['c_termID'];
-    echo "Cookie Term ID: " . $cookie_term_ID . '<br>';
+   // echo "Cookie Term ID: " . $cookie_term_ID . '<br>';
 
     // Check if the term name from the cookie is not in the current categories
     if (!in_array($cookie_term_name, $current_categories) ) {
@@ -63,14 +62,12 @@ if (isset($_COOKIE['c_termname'])) {
 /*
 */
 
-
-
-
+/*
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-
+*/
 
 
 // https://kriesi.at/documentation/enfold/hooks-and-filters/
@@ -300,7 +297,7 @@ if ( !is_archive() ):
                 [av_section min_height='' min_height_pc='25' min_height_px='500px' shadow='no-border-styling' bottom_border='no-border-styling' padding='' margin='' color='footer_color' background='bg_color' custom_bg=''  position='top left' repeat='no-repeat'overlay_opacity='0.5' overlay_color='' overlay_pattern='' av-small-css_position_z_index='' av-mini-css_position_z_index='' id='lt_footer_masonry' custom_class='' template_class='' aria_label='' element_template='' one_element_template='' av_element_hidden_in_editor='1' sc_version='1.0'] 
                 
                  <span class='floatleft' style='margin-bottom:18px'> 
-                    <h2><span style='color:#fff; margin-bottom:30px'> " .$term_name_f_cookie."  :  ".$term_ID_f_cookie. "</span></h2>
+                    <h2><span style='color:#fff; margin-bottom:30px'> " .$term_name_f_cookie."  </span></h2>
                     
                 </span> 
                      <a href='' class='lt_popup avia-button  avia-icon_select-yes-left-icon avia-size-small av-button-notext floatright'  style='background-color:transparent; box-shadow:none; border:none; font-size: 18px;'>
@@ -320,11 +317,6 @@ if ( !is_archive() ):
         add_action( 'ava_before_footer', 'leuchttuerme_masonry' , 9  );
 
 endif;
-
-
-
-
-
 
 
 
@@ -392,9 +384,6 @@ function footer_script_lt() {
 
 // Hook the popmake_custom function to run when the wp_footer action is fired
 add_action('wp_footer', 'footer_script_lt', 9);
-
-
-
 
 
 

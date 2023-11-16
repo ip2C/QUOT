@@ -16,7 +16,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 
 
-
 /* 
 RE  			 Umbenennung von Beiträgen
 **************************************************************************** WP Core */
@@ -46,7 +45,9 @@ add_action( 'init', 'cp_change_post_object' );
 
 
 
-/*RE ******************************		Post Type:  	Weit. Materialien 	+	Tax     Medienformen
+
+/*
+RE 					Post Type:  	Weit. Materialien 	+	Tax     Medienformen
 *************************************************************************************************************** */
  function cptui_register_my_cpts_materialien() {
 
@@ -267,7 +268,7 @@ add_action( 'init', 'cptui_register_my_taxes_kategorien_tg' );
 			"rewrite" => [ "slug" => "orientierungsplan", "with_front" => true ],
 			"query_var" => true,
 			"menu_position" => 4,
-			"supports" => [ "title", "editor", "thumbnail", "excerpt",  "page-attributes" ],
+			"supports" => [ "title", "editor", "thumbnail", "excerpt", "revisions",  "page-attributes" ],
 			"taxonomies" => [ "category", "post_tag" ],
 			"show_in_graphql" => false,
 		];
@@ -351,7 +352,7 @@ function cptui_register_my_cpts_extras() {
 		"rewrite" => [ "slug" => "extras", "with_front" => true ],
 		"query_var" => true,
 		"menu_position" => 4,
-		"supports" => [ "title", "editor", "thumbnail", "excerpt", "trackbacks", "page-attributes" ],
+		"supports" => [ "title", "editor", "thumbnail", "excerpt", "revisions", "trackbacks", "page-attributes" ],
 		"taxonomies" => [ "category", "post_tag", "extras_kategorie" ],
 		"show_in_graphql" => false,
 	];
@@ -525,7 +526,7 @@ function cptui_register_my_cpts_leuchttuerme() {
 		"can_export" => true,
 		"rewrite" => [ "slug" => "leuchttuerme", "with_front" => true ],
 		"query_var" => true,
-		"supports" => [ "title", "editor", "thumbnail", "excerpt", "trackbacks", "page-attributes" ],
+		"supports" => [ "title", "editor", "thumbnail", "excerpt", "revisions", "trackbacks", "page-attributes" ],
 		"taxonomies" => [ "post_tag", "lt_vk_kategorien" ],
 		"show_in_graphql" => true,
 	];

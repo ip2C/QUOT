@@ -1,6 +1,6 @@
 /*
 Theme Name: Enfold Child
-Version: 6.2.0
+Version: 6.2.1
 Author: RE / GS
 Author URI: http://www.ip2c.de
 Template: enfold
@@ -21,8 +21,9 @@ Fontblue:  rgba(44, 53, 61);
     --font: #093a56;
 }
 
-
-
+.image-overlay .image-overlay-inside{
+    display: none !important;
+}
 
 
 /*  2023 Anpassungen */
@@ -32,7 +33,36 @@ Fontblue:  rgba(44, 53, 61);
 }
 
 
-
+/* ____________  2023 implement the Spendenbutton in header */
+ 
+  
+.imgspendenbutton a{
+    position: absolute;
+    text-indent: -9999px; 
+}
+.imgspendenbutton a span{
+    z-index: 322;
+    position: absolute !important;
+    display: block;  
+    background-image: url('https://qualitaetsoffensive-teilhabe.de/wp-content/uploads/spenden-2.png') !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden; 
+    right: calc(10px + -12vw);
+    bottom: 14px;
+    width: calc(80px + 3vmin) !important;
+    height: calc(80px + 3vmin) !important; 
+    transform: rotate(7deg);
+    transition: all ease-in-out 0.2s;  
+}
+.imgspendenbutton .avia-menu-fx{
+    display: none !important;
+}
+  .imgspendenbutton a:hover span, .imgspendenbutton a:focus span {
+    transform: scale(1.03);
+    transition: all ease-in-out 0.2s;    
+  }
+  
 
 
 
@@ -1536,8 +1566,20 @@ div .av_one_fourth {
     min-width: 320px !important;
     margin-top: -20px !important;
 }
+.ajax_search_response.main_color {
+  display: flex;
+  flex-wrap: wrap;
+}
 .av_searchform_element_results a.av_ajax_search_entry{
-    max-width: 500px !important;
+    
+    width: 49% !important;
+    float: left;
+}
+.av_searchform_element_results h4{
+    max-width: 1200px !important;
+    float: none !important;
+    display: inline-block !important;
+    width: 100% !important;
 }
 .img_header .bottomliner .av_textblock_section:last-child{
      width: 100% !important;
@@ -2232,6 +2274,20 @@ section.gridkachel:hover{
 .main_color .av_searchsubmit_wrapper {
   background-color: transparent !important;
 }
+.togglecontainer .av_searchsubmit_wrapper {
+  
+}
+.togglecontainer .av_searchform_wrapper{
+    border: none !important;
+    font-size: 15px
+}
+.togglecontainer .av_searchform_wrapper input{
+    /*! border-bottom: 1px solid var(--yellow) !important; */
+}
+.togglecontainer .av_searchform_wrapper input:focus{
+    border-bottom: 1px solid var(--red) !important;
+  
+}
 /* END Form */
 
 
@@ -2373,6 +2429,10 @@ section.gridkachel:hover{
 }
 .av-elegant-toggle.togglecontainer .av_toggle_section .toggler.activeTitle {
   border-bottom: 0px !important;
+}
+.av-elegant-toggle.togglecontainer .av_toggle_section .toggler.activeTitle ,
+.av-elegant-toggle.togglecontainer .av_toggle_section .active_tc{
+   background: #efefef !important;
 }
 #main .toggle_content {
     border-left: none;

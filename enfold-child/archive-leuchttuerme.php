@@ -6,8 +6,6 @@ if( ! defined( 'ABSPATH' ) ) { die(); }
 $term = get_queried_object(); 
 
 // Output the current archive name 
-
-
 $current_archive_name = $term->name;
 $current_archive_id = $term->term_id;
 
@@ -16,10 +14,8 @@ setcookie('c_termname', $current_archive_name, 0, '/', 'qualitaetsoffensive-teil
 setcookie('c_termID', $current_archive_id, 0, '/', 'qualitaetsoffensive-teilhabe.de');
 
 
-
 //  we need some functions of the single page functions as well
 require_once "leuchttuerme-functions.php";
-
 
 
 //  We add the same body class to the header
@@ -31,12 +27,10 @@ add_filter('body_class', 'custom_bodyclass');
 
 
 
-
 /*
  * get_header is a basic wordpress function, used to retrieve the header.php file in your theme directory.
  */
 get_header();
-
 
 
 
@@ -124,7 +118,7 @@ get_header();
                                         wp_reset_postdata(); // Reset the post data to the main query
                                     }
                                 ?>
-                                <a href='<?php echo esc_url($first_post_link); ?>' class='avia-button avia-icon_select-yes-right-icon avia-size-medium avia-position-right avia-color-theme-color' target='_self' rel='noopener noreferrer'>
+                                <a href='<?php echo esc_url($first_post_link); ?>' class='avia-button avia-icon_select-yes-right-icon avia-size-medium avia-position-right ' target='_self' rel='noopener noreferrer'>
                                         Mehr
                                     <span class='avia_button_icon avia_button_icon_right' aria-hidden='true' data-av_icon='' data-av_iconfont='entypo-fontello'> </span>
                                 </a>
@@ -148,7 +142,7 @@ get_header();
                                  <div class="post-entry post-entry-type-page">
                                      <div class="entry-content-wrapper clearfix">
                                  <span class="floatleft" style="margin-bottom:18px">
-                                    <h2><span style="color:#fff; margin-bottom:30px">  <?php echo $archive_name . "  : " . $archive_page_id ?> </span></h2>
+                                    <h2><span style="color:#fff; margin-bottom:30px">  <?php echo $archive_name  /*."  : " . $archive_page_id */ ?> </span></h2>
                                 </span>
                                      <a href="" class="lt_popup avia-button avia-icon_select-yes-left-icon avia-size-small av-button-notext floatright pum-trigger" style="background-color: transparent; color: #fff;  box-shadow: none; border: medium; font-size: 18px; cursor: pointer;">
                                                  Alle anzeigen &nbsp;<span class=" avia_button_icon avia_button_icon_left " aria-hidden="true" data-av_icon="" data-av_iconfont="entypo-fontello"></span>
