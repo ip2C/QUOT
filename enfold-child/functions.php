@@ -11,15 +11,15 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 // INCLUDE
 // include the functions for CPT - ACF filter and relationships   
 //
-require_once "functions-enfold.php";
+ require_once "functions-enfold.php";
 //
-require_once "masonry-functions.php";
+ require_once "masonry-functions.php";
 //
 require_once "js-functions.php";
 //
-require_once "reg_cpt-functions.php";
+ require_once "reg_cpt-functions.php";
 //
-require_once "cpt_acf-functions.php";
+  require_once "cpt_acf-functions.php";
 //
 //
 function load_leuchttuerme_functions() {
@@ -37,6 +37,62 @@ function custom_archive_logic() {
 add_action('template_redirect', 'custom_archive_logic');
 
 /* END include */
+
+
+
+
+
+
+
+/*
+RE	2024 - 02		            Before footer Shortcode 
+******************************************************************************** */
+
+
+function add_sharing_before_footer( $outputHTML  )  {  
+	//
+echo "<div id='sharing_wrapper' class='avia-section main_color avia-section-default avia-no-border-styling  avia-builder-el-276362  el_after_av_section  avia-builder-el-last  avia-bg-style-scroll container_wrap fullsize' ><div class='container av-section-cont-open'>";
+					
+echo "<div id='sharing' class='flex_column av-content-full ' style='margin-top:20px; margin-bottom:0px; border-radius:0px; ' >
+					<section class='av_textblock_section ' itemscope='itemscope' itemtype='https://schema.org/CreativeWork'><div class='avia_textblock' itemprop='text'></div></section><h3 class='w_materialien_headline'><span style='color:#a5382f;'></span></h3>";
+
+echo do_shortcode(" [av_social_share title='Eintrag teilen' buttons='' btn_action='' yelp_link='https://www.yelp.com' facebook_profile='' twitter_profile='' whatsapp_profile='' pinterest_profile='' reddit_profile='' linkedin_profile='' tumblr_profile='' vk_profile='' mail_profile='' yelp_profile='' five_100_px_profile='' behance_profile='' dribbble_profile='' flickr_profile='' instagram_profile='' skype_profile='' soundcloud_profile='' vimeo_profile='' xing_profile='' youtube_profile='' style='' alignment='' alb_description='' id='' custom_class='' template_class='' element_template='' one_element_template='' av_uid='av-lumir9md' sc_version='1.0' admin_preview_bg=''] ");
+			
+echo  "<p><br></p><p>&nbsp;</p></div><!-- close the toggle container --></div> <!-- close av_four_fifth --></div>  <!-- close container --></div>  <!-- close materialien_wrapper --> ";
+		 
+	
+} // End function related_relationship() 
+
+add_action('ava_before_footer', 'add_sharing_before_footer', 999 );
+
+
+
+
+
+
+
+
+
+/*
+RE			    Allow CORS  
+******************************************************************************** */
+/**/
+function allow_cross_origin_access() {
+    // Only add the header for requests coming from the specific domain
+    if (isset($_SERVER['HTTP_ORIGIN'])) {
+        $allowed_origin = 'https://testsys-2.qualitaetsoffensive-teilhabe.de';
+        // Check if the HTTP_ORIGIN is the one we want to allow
+        if ($_SERVER['HTTP_ORIGIN'] == $allowed_origin) {
+            header("Access-Control-Allow-Origin: $allowed_origin");
+            // Depending on your needs, you might want to add additional headers here, such as:
+            header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+            header('Access-Control-Allow-Headers: X-Requested-With, Content-Type, Accept, Origin, Authorization');
+        }
+    }
+}
+
+// Hook into WordPress early enough to send headers
+add_action('init', 'allow_cross_origin_access');
 
 
 
@@ -73,9 +129,6 @@ function set_materialien_to_published_once() {
 }
 add_action('admin_init', 'set_materialien_to_published_once');
 */
-
-
-
 
 
 

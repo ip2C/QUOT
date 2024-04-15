@@ -1,11 +1,10 @@
 /*
 Theme Name: Enfold Child
-Version: 6.2.1
-Author: RE / GS
+Version: 6.2.4
+Author: RE / GS 
 Author URI: http://www.ip2c.de
 Template: enfold
 */
-/**/ 
 
 /*
 red =: rgba(161 56 47, 1);
@@ -14,6 +13,8 @@ greyblue  : rgba(44 53 61,1);
 Fontblue:  rgba(44, 53, 61);
 }
 */
+
+
 :root {
     --red: #a1382f;
     --yellow: #efbb20;
@@ -32,16 +33,71 @@ Fontblue:  rgba(44, 53, 61);
     color: var(--red) !important;
 }
 .av-image-copyright.av-copyright-right{
-    background-color: #2c353dbd;
     padding: 5px 20px;
     color: #fff !important;
     padding-left: 20px;
     border-radius: 0px;
 }
 
+/* ____________________  2024 Pino Menu AND content correction  __ */
+#menu-test-pino li a{
+    font-family: 'Open Sans Condensed' !important; 
+    border-radius: 0 !important; 
+    font-size: clamp(18px, 1.1vw, 20px) !important;
+    text-align: center !important; 
+    box-shadow: none !important;
+}
+.qs_tabs .av-inner-tab-title{
+    position: relative;
+}
+.qs_tabs .av-inner-tab-title i{
+    width: 160px;
+    position: absolute;
+    bottom: 92%;
+    left:-35px;
+    background: #ffffffba;
+    border-radius: 3px;
+    padding:2vmin;
+    z-index: 2;
+}
+.qs_tabs .tab_inner_content ul li{
+    list-style: none !important;
+    border-bottom: 1px solid #cecece;
+    padding: 20px;
+    margin-right: 10px;
+}
+.qs_tabs .tab_inner_content ul li:last-child{
+    border-bottom: none ;
+}
+.qs_tabs .tab_inner_content ul li::before{
+    content:"📃";
+    padding-right: 20px;
+    color: inherit;
+}
+.qs_tabs .avia-fold-unfold-section .av-fold-unfold-container::after {
+    background-color: #e8e8e8 !important;
+    background: linear-gradient( to bottom, rgba(255,255,255,0), #e8e8e8 ) !important;
+  } 
+.js_active .av-layout-tab  .tab_content {
+    padding: 0 0 !important;
+    background-color: transparent !important; 
+}
+.av-layout-tab   div .tab {
+    border-color: #cecece !important;
+      border-bottom-color:#cecece !important;
+    border-width: 2px !important;
+  }
+/* END Pino Neu */
+
+
+
+
+
+
+
+
 /* ____________  2023 implement the Spendenbutton in header */
  
-  
 .imgspendenbutton a{
     position: absolute;
     text-indent: -9999px; 
@@ -1708,8 +1764,8 @@ div .av_one_fourth {
     font-size: 100% !important;
 }
 .av-submenu-container.alternate_color.fixed li a {
-    background-color: rgb(239, 187, 32) !important;
-    opacity: 0.9;
+    /*! background-color: rgb(239, 187, 32) !important; */
+    opacity: 0.96;
     width: 100%;
 }
 .av-submenu-container.alternate_color.fixed li a, .av-submenu-container  {
@@ -2360,69 +2416,25 @@ section.gridkachel:hover{
 
 
 /* Reiter/Tabs Hintergrund etc. */
-
-#main div.tab_titles div.tab.tab_counter_0 {
+/* Set default styles for all tabs */
+#main div.tab_titles div.tab {
     color: #07283a;
     background-color: #8aa3bf;
 }
-#main div.tab_titles div.tab.tab_counter_0.active_tab {
+/* Override styles for active tabs */
+#main div.tab_titles div.tab.active_tab {
     color: #ffffff !important;
     background-color: #8aa3bf !important;
 }
-#main div.tab_titles div.tab.tab_counter_1 {
-    color: #07283a;
-    background-color: #8aa3bf;
-}
-#main div.tab_titles div.tab.tab_counter_1.active_tab {
-    color: #ffffff !important;
-    background-color: #8aa3bf !important;
-}
-#main div.tab_titles div.tab.tab_counter_2 {
-    color: #07283a;
-    background-color: #8aa3bf;
-}
-#main div.tab_titles div.tab.tab_counter_2.active_tab {
-    color: #ffffff !important;
-    background-color: #8aa3bf !important;
-}
-#main div.tab_titles div.tab.tab_counter_3 {
-    color: #07283a;
-    background-color: #8aa3bf !important;
-}
-#main div.tab_titles div.tab.tab_counter_3.active_tab {
-    color: #ffffff !important;
-    background-color: #8aa3bf !important;
-}
-#main div.tab_titles div.tab.tab_counter_4 {
-    color: #07283a;
-    background-color: #8aa3bf;
-}
-#main div.tab_titles div.tab.tab_counter_4.active_tab {
-    color: #ffffff !important;
-    background-color: #8aa3bf !important;
-}
-#main div.tab_titles div.tab.tab_counter_5 {
-    color: #07283a;
-    background-color: #8aa3bf;
-}
-#main div.tab_titles div.tab.tab_counter_5.active_tab {
-    color: #ffffff !important;
-    background-color: #8aa3bf !important;
-}
-
-#main  container.tab_content.active_tab_content p {
+/* Set styles for active tab content */
+#main container.tab_content.active_tab_content p {
     margin: 0.85em 15px !important;
 }
-
 .js_active .tab_content {
     padding: 0 0 !important;
     background-color: #fff !important;
     border: none;
 }
-.entry-content-wrapper .tab_content p {
-    padding-left: 15px !important;
-}
-
 #main div .main_color .tabcontainer .active_tab_content, div .main_color .tabcontainer .active_tab {
     background-color: #ffffff !important;
 }
@@ -2432,6 +2444,9 @@ section.gridkachel:hover{
 #main .togglecontainer .single_toggle:first-child .toggler, .togglecontainer .taglist + .single_toggle .toggler {
     border-left: none;
     border-right: none;
+}
+#Lit-Text .togglecontainer p.toggler{
+    color: transparent !important;
 }
 .av-elegant-toggle.togglecontainer .av_toggle_section .toggler.activeTitle {
   border-bottom: 0px !important;
@@ -2700,22 +2715,7 @@ ul.ez-toc-list li ul li ul li a {
         padding-left: 4vmin !important;
     }
 }/**/
-/* RE 2022   -   SSB  Sticky Side Buttons  */
-#ssb-container ul li {
-    box-shadow: 0 0 6px rgb(0, 0, 0, 0.5);
-    margin-bottom: .4vh;
-}
-#ssb-container ul li a{
-    font-size: 11px;
-}
-#ssb-container ul li a span{
-    font-size: 14px;
-}
-@media screen and (max-width: 989px) {
-    #ssb-container{
-        display:none;
-    }
-}/**/
+
 
 /*  RE    ____________   2021  - Portfolio */
 .portfolio-details-inner > p.open_slide, .portfolio-details-inner #materialen, .portfolio-details-inner div.av_four_fifth, .portfolio-details-inner div.av_one_fifth {

@@ -3,7 +3,6 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 
-
 /* 
 RE  	   Before footer do the av masonry Gallerie
 **************************************************************************** Enfold - CPT UI */
