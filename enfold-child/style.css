@@ -31,7 +31,13 @@ Fontblue:  rgba(44, 53, 61);
     font-size: 28px !important;
     color: var(--red) !important;
 }
-
+.av-image-copyright.av-copyright-right{
+    background-color: #2c353dbd;
+    padding: 5px 20px;
+    color: #fff !important;
+    padding-left: 20px;
+    border-radius: 0px;
+}
 
 /* ____________  2023 implement the Spendenbutton in header */
  
