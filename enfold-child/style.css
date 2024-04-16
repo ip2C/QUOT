@@ -39,26 +39,95 @@ Fontblue:  rgba(44, 53, 61);
     border-radius: 0px;
 }
 
+
+ 
 /* ____________________  2024 Pino Menu AND content correction  __ */
-#menu-test-pino li a{
-    font-family: 'Open Sans Condensed' !important; 
-    border-radius: 0 !important; 
-    font-size: clamp(18px, 1.1vw, 20px) !important;
-    text-align: center !important; 
-    box-shadow: none !important;
+@media (min-width: 768px) {
+    #kultur_menu{ 
+        background-color: transparent !important;
+    }
+
+    #kultur_menu  ul#menu-test-pino {
+        float: right;
+        display: flex !important;
+        justify-content: flex-end; /* Um das Menü an den rechten Bildschirmrand zu verschieben */
+        align-items: center; /* Um den Text vertikal zu zentrieren */
+        width: 36%; 
+        min-width: 480px;
+        margin-right: 80px !important;    
+        margin-top: 6px !important;
+        /*! padding:10px; */
+        box-shadow:0p 0px 10px #ffffff !important;
+    }
+
+    ul#menu-test-pino > li {
+        
+        background: none !important;
+        font-family: 'Open Sans Condensed' !important; 
+        font-size: clamp(16px, .9vw, 18px) !important;
+        text-align: center !important; 
+        border: none !important;
+        border-left-width: medium;
+        height: 56px; 
+        width: 97px;
+        border-left: 2px solid #3059714f !important;
+        flex: 1;
+        display: flex !important;
+        align-items: center !important;
+        text-align: center;
+        justify-content: center;
+        margin-bottom: 0px !important; 
+    }
+    ul#menu-test-pino > li:last-child {
+        border-right: 2px solid #3059714f !important;
+    }
+    ul#menu-test-pino > li > a {
+        border: none !important;   
+        font-size: clamp(16px, .9vw, 18px) !important;
+        color: var(--font);
+        text-decoration: none; /* Um die Standardunterstreichung zu entfernen */
+        /*
+        background: radial-gradient(circle at center, rgb(255, 255, 255) 40%, rgba(255, 255, 255, 0.5) 100%);*/
+        text-shadow: 
+            -5px -5px 10px rgba(255,255,255,0.95), /* Verschiebung nach oben links */
+            5px  5px 20px rgba(255,255,255,0.95), /* Verschiebung nach unten rechts */
+            0px  0px 350px rgba(255,255,255,0.95), /* Zentraler Schatten */
+            0px  0px 80px rgba(255,255,255,0.95), /* Zusätzlicher Schatten */
+            0px  0px 820px rgba(255,255,255,0.95); /* Zusätzlicher Schatten */
+        padding: 20px !important;
+        background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 80%); /* Ovaler radialer Verlauf */
+
+    }
+
+}/**/
+
+/**/
+.av-inner-tab-title i{
+    
 }
-.qs_tabs .av-inner-tab-title{
-    position: relative;
+.qs_tabs .av-inner-tab-title i{ 
+    transform: translate alle ease-in-out 0.2s;
+    opacity: 0;
 }
 .qs_tabs .av-inner-tab-title i{
+    align-items: center; /* Hier wird der Inhalt vertikal zentriert */
     width: 160px;
     position: absolute;
-    bottom: 92%;
-    left:-35px;
-    background: #ffffffba;
+    top: 2px; 
+    margin-left: -30px;
+    background: #ffffffb8;
+    border: 1px solid var(--yellow);
+    font-size: 12px; 
     border-radius: 3px;
-    padding:2vmin;
+    padding:1.3vmin;
     z-index: 2;
+    height: 80%;
+    display: flex;
+    color: var(--greyblue) !important;
+}
+.qs_tabs .av-inner-tab-title:hover > i{
+    transform: translate alle ease-in-out 0.2s;
+    opacity: 1 !important; 
 }
 .qs_tabs .tab_inner_content ul li{
     list-style: none !important;
@@ -3068,8 +3137,8 @@ h2.portfolio-preview-title{
         right: 0;
         top: -100%;
         margin-top: 50px;
-        background-color: transparent;
-        color: var(--greyblue);
+        background-color: transparent; 
+        color: var(--greyblue); 
         font-size: 22px;
     }
 }/**/
